@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: 'true'
+        default_schema: cinema
+    hibernate:
+      ddl-auto: none
+    show-sql: 'true'
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: ${POSTGRES_PASSWORD:postgres}
+    username: ${POSTGRES_USER:postgres}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:cinema}
