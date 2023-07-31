@@ -1,7 +1,9 @@
 package com.example.cinema.model;
 
 import com.example.cinema.model.enums.UserRole;
+import com.example.cinema.util.PasswordConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="\"user\"")
+@Table(name="users")
 public class User {
 
     @Id
@@ -37,6 +39,7 @@ public class User {
     private String username;
 
     @Column(nullable=false)
+    @Convert(converter = PasswordConverter.class)
     private String password;
 
     @Enumerated(value = EnumType.STRING)

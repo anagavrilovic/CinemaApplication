@@ -1,5 +1,6 @@
 package com.example.cinema.controller;
 
+import com.example.cinema.dto.LoginDto;
 import com.example.cinema.dto.UserCreationDto;
 import com.example.cinema.dto.UserDto;
 import com.example.cinema.service.AuthenticationService;
@@ -22,6 +23,11 @@ public class AuthenticationController {
     @PostMapping("/register")
     public UserDto register(@Valid @RequestBody UserCreationDto user) {
         return new UserDto(authenticationService.register(user));
+    }
+
+    @PostMapping("login")
+    public String login(@Valid @RequestBody LoginDto dto) {
+        return authenticationService.login(dto.getEmail(), dto.getPassword());
     }
 
 }
