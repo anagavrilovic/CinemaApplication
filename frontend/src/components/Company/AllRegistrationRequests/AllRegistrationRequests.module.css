@@ -1,0 +1,12 @@
+.component {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media(max-width: 40rem) {
+    .component {
+        flex-direction: column;
+    }
+}

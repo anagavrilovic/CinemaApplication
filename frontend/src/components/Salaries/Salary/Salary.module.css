@@ -1,0 +1,105 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 0;
+
+    background-color: white;
+    box-shadow: 2px 2px 15px #cfcfcf;
+    padding: 2rem;
+    padding-top: 1rem;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #d4d4d4;
+    width: 65%;
+    text-align: left;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.salaryValue {
+    color: var(--dark-yellow);
+}
+
+.salaries {
+    width: 30%;
+    position: relative;
+}
+
+.salariesLabel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.salariesValue {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avgSalary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    top: 1.6rem;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+}
+
+.circle {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--yellow);
+    margin-top: -0.7rem;
+}
+
+.scale {
+    width: 75%;
+    height: 0.5rem;
+    border-radius: 5px;
+    background-color: #d4d4d4;
+}
+
+@media(max-width: 65rem) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info {
+        width: 100%;
+    }
+
+    .salaries {
+        width: 60%;
+        margin: 2rem 0;
+    }
+}
+
+@media(max-width: 40rem) {
+
+    .info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .infoPart {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-bottom: 1px solid #d4d4d4;
+    }
+
+    .salaries {
+        width: 100%;
+    }
+}

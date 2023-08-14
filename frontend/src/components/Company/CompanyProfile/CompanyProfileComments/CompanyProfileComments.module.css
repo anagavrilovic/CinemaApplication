@@ -1,0 +1,51 @@
+.commentHeader {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    margin-top: 3rem;
+}
+
+.commentRate {
+    border: 1px solid #bdbdbd;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 5px #cfcfcf;
+}
+
+.rate {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 1px solid #bdbdbd;
+    margin: 0.5rem 0;
+    padding-bottom: 0.5rem;
+}
+
+.caption {
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.captionText {
+    margin-top: 0.5rem;
+}
+
+.date {
+    font-style: italic;
+}
+
+.commentContent {
+    border: 1px solid #bdbdbd;
+    margin-bottom: 3rem;
+    text-align: left;
+    padding: 1.5rem 2.5rem;
+    box-shadow: 1px 1px 5px #cfcfcf;
+}
+
+.commentText {
+    margin-bottom: 2rem;
+}
+
+.authorInfo {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}

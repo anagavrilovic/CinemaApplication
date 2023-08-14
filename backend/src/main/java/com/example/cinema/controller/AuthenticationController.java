@@ -3,6 +3,7 @@ package com.example.cinema.controller;
 import com.example.cinema.dto.LoginDto;
 import com.example.cinema.dto.UserCreationDto;
 import com.example.cinema.dto.UserDto;
+import com.example.cinema.dto.UserLoginInfoDto;
 import com.example.cinema.service.AuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +27,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("login")
-    public String login(@Valid @RequestBody LoginDto dto) {
-        return authenticationService.login(dto.getEmail(), dto.getPassword());
+    public UserLoginInfoDto login(@Valid @RequestBody LoginDto dto) {
+        UserLoginInfoDto info = authenticationService.login(dto.getEmail(), dto.getPassword());
+        return info;
     }
 
 }

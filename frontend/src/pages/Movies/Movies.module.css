@@ -1,0 +1,29 @@
+.page {
+    padding: 1rem 7%;
+    padding-top: 3.5rem;
+}
+
+.content {
+    padding: 4rem 0;
+}
+
+.sort {
+    display: flex;
+    align-items: center;
+}
+
+.select {
+    background-color: #f8f8f8;
+    border: none;
+    border: 1px solid rgb(163, 163, 163);
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    font-family: inherit;
+    outline: none;
+    height: 2.3rem;
+    color: #727272;
+    margin: 0 1rem;
+}
+
+@media (max-width: 40rem) {
+}

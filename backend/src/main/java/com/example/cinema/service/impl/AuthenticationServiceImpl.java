@@ -1,6 +1,7 @@
 package com.example.cinema.service.impl;
 
 import com.example.cinema.dto.UserCreationDto;
+import com.example.cinema.dto.UserLoginInfoDto;
 import com.example.cinema.exception.BadCredentialsException;
 import com.example.cinema.model.User;
 import com.example.cinema.service.AuthenticationService;
@@ -30,12 +31,18 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public String login(String email, String password) {
+    public UserLoginInfoDto login(String email, String password) {
         User user = userService.findByEmail(email);
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new BadCredentialsException("Password is incorrect");
         }
-        return tokenService.generateToken(user);
+
+        return new UserLoginInfoDto(
+                user.getEmail(),
+                user.getUsername(),
+                tokenService.generateToken(user),
+                user.getRole()
+        );
     }
 
 }

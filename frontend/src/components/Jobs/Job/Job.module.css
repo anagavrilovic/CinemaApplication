@@ -1,0 +1,124 @@
+.component {
+    width: calc(100% - 2rem);
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 2rem 1rem;
+    box-shadow: 2px 2px 15px #cfcfcf;
+    text-align: left;
+}
+
+.component:hover {
+    box-shadow: 2px 2px 15px #a5a5a5;
+}
+
+.image {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 2rem;
+}
+
+.jobInfo {
+    flex: 1;
+}
+
+.jobTitle {
+    margin-top: 0;
+}
+
+.mainText {
+    display: flex;
+    align-items: center;
+}
+
+.starIcon {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0.3rem;
+    color: var(--yellow);
+}
+
+.dotIcon {
+    width: 0.2rem;
+    height: 0.2rem;
+    margin: 0 0.5rem;
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.technology {
+    background-color: #a28a5ba0;
+    color: white;
+    border-radius: 5px;
+    margin: 0 0.3rem;
+    padding: 0.4rem;
+    font-size: 0.8rem;
+}
+
+.expiresIn {
+    margin-bottom: 0;
+    color: #6f6f6f;
+    font-size: 0.9rem;
+}
+
+.button {
+    width: 10%;
+    height: 2rem;
+    font-size: 0.8rem;
+    background-color: var(--dark-yellow);
+    color: white;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+    color: var(--dark-yellow);
+    background-color: #fff4df;
+    border: 1px solid var(--dark-yellow);
+}
+
+@media(max-width: 40rem) {
+    .component {
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .image {
+        width: 10rem;
+        height: 10rem;
+        margin-bottom: 2rem;
+        margin-right: 0;
+    }
+
+    .jobInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .jobInfo > p {
+        margin: 0.5rem;
+    }
+
+    .technologies {
+        margin: 0.5rem 0;
+        justify-content: center;
+    }
+
+    .technology {
+        margin: 0.5rem;
+    }
+
+    .button {
+        width: 30%;
+        margin: 1rem 0;
+    }
+}

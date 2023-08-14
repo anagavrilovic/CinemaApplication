@@ -1,0 +1,47 @@
+.navButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.button {
+    width: 18%;
+    height: 2.6rem;
+    font-size: 1rem;
+    background-color: #eee;
+    color: var(--main-text);
+    border: 1px solid #eee;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.buttonActive {
+    background-color: var(--dark-yellow);
+    color: white;
+    border: 1px solid var(--dark-yellow);
+}
+
+.button:hover,
+.button:active {
+    color: var(--dark-yellow);
+    background-color: #fff4df;
+    border: 1px solid var(--dark-yellow);
+}
+
+@media (max-width: 60rem) {
+    .button {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media (max-width: 40rem) {
+    .navButtons {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}

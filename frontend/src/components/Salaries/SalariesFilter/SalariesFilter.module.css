@@ -1,0 +1,72 @@
+.component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter {
+    width: calc(80% + 2px + 0.5rem);
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.select {
+    background-color: #f8f8f8;
+    border: none;
+    border: 1px solid rgb(163, 163, 163);
+    width: 24%;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    font-family: inherit;
+    outline: none;
+    height: 2.3rem;
+    color: #727272;
+}
+
+.button {
+    width: 20%;
+    height: 2.3rem;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.buttonEnabled {
+    background-color: var(--dark-yellow);
+    color: white;
+    border: 1px solid var(--dark-yellow);
+    cursor: pointer;
+}
+
+.buttonEnabled:hover,
+.buttonEnabled:active {
+    color: var(--dark-yellow);
+    background-color: #fff4df;
+    border: 1px solid var(--dark-yellow);
+}
+
+.buttonDisabled {
+    background-color: #bdbdbd;
+    color: white;
+    border: 1px solid #727272;
+    cursor: not-allowed;
+}
+
+@media (max-width: 40rem) {
+
+    .filter {
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+    
+    .select {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .button {
+        font-size: 0.8rem;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
