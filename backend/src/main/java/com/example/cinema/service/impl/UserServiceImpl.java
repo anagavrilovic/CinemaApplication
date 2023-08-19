@@ -7,6 +7,10 @@ import com.example.cinema.mapper.UserMapper;
 import com.example.cinema.model.User;
 import com.example.cinema.repository.UserRepository;
 import com.example.cinema.service.UserService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +26,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) {
+                return userRepository.findByEmail(username)
+                        .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            }
+        };
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<User> findAllUsers() {
         return userRepository.findAll();
@@ -29,9 +44,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User save(UserCreationDto user) {
+    public User save(UserCreationDto user, String hashedPassword) {
         validateUser(user);
-        return userRepository.save(UserMapper.userCreationDtoToUser(user));
+        return userRepository.save(UserMapper.userCreationDtoToUser(user, hashedPassword));
     }
 
     @Override

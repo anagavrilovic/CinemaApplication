@@ -9,13 +9,13 @@ import java.util.List;
 
 public final class UserMapper {
 
-    public static User userCreationDtoToUser(UserCreationDto user) {
+    public static User userCreationDtoToUser(UserCreationDto user, String hashedPasword) {
         return new User(
                 user.getFirstName(),
                 user.getLastName(),
                 user.getEmail(),
                 user.getUsername(),
-                user.getPassword(),
+                hashedPasword,
                 user.getRole());
     }
 

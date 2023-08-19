@@ -1,10 +1,7 @@
 package com.example.cinema.model;
 
-import com.example.cinema.auth.UserRoleAuthority;
 import com.example.cinema.model.enums.UserRole;
-import com.example.cinema.util.PasswordConverter;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -15,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -43,7 +41,6 @@ public class User implements UserDetails {
     private String username;
 
     @Column(nullable=false)
-    @Convert(converter = PasswordConverter.class)
     private String password;
 
     @Enumerated(value = EnumType.STRING)
@@ -79,8 +76,11 @@ public class User implements UserDetails {
         return email;
     }
 
+    public String getUserUsername() { return username; }
+
+    @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
@@ -105,9 +105,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new UserRoleAuthority(this.role.toString()));
-        return authorities;
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     public String getPassword() {

@@ -42,7 +42,7 @@ public class UserCreationDto {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
-        this.username = user.getUsername();
+        this.username = user.getUserUsername();
         this.password = user.getPassword();
         this.role = user.getRole();
     }
