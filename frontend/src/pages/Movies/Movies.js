@@ -15,6 +15,8 @@ function Movies() {
     useEffect(() => {
         const config = {
             headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                Accept: 'application/json',
                 'Authorization': `Bearer ${user.accessToken}`
             }
         }
