@@ -68,7 +68,7 @@
 .button:hover,
 .button:active {
     color: var(--dark-yellow);
-    background-color: #fff4df;
+    background-color: #f5dede;
     border: 1px solid var(--dark-yellow);
 }
 

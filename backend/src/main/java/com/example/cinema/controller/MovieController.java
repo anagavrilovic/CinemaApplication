@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("movie")
 public class MovieController {
 
