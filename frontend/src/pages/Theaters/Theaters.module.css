@@ -5,10 +5,6 @@
     flex-direction: column;
 }
 
-.content {
-    
-}
-
 .button {
     width: 20%;
     height: 2.6rem;
@@ -25,7 +21,7 @@
 .button:hover,
 .button:active {
     color: var(--dark-yellow);
-    background-color: #f5dede;
+    background-color: #fff4df;
     border: 1px solid var(--dark-yellow);
 }
 

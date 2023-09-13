@@ -3,13 +3,19 @@ import classes from './Movie.module.css'
 import MovieImage from '../../../images/movie.jpeg';
 import { useNavigate } from 'react-router-dom';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+
+import { CheckUserPermission } from '../../../components/Permissions/CheckUserPermission.js';
+
+
 function Movie(movie) {
 
     const navigate = useNavigate();
 
-    function handleViewCompany() {
-        navigate(`/projections/${movie.id}`, {state: {movie: movie }});
-    }
+    // function handleViewCompany() {
+    //     navigate(`/projections/${movie.id}`, {state: {movie: movie }});
+    // }
 
     useEffect(() => {
         console.log(movie)
@@ -36,9 +42,12 @@ function Movie(movie) {
                 </div>
                 <div className={classes.description}>{movie.movie.description}</div>
             </div>
-            <div className={classes.buttonDetails}>
-                <button className={classes.button} onClick={handleViewCompany}>View Projections</button>
-            </div>
+            <CheckUserPermission role="['ROLE_ADMIN']">
+                <div className={classes.buttonDetails}>
+                    <button className={classes.button}><FontAwesomeIcon icon={faPenToSquare} /></button>
+                    <button className={classes.button}><FontAwesomeIcon icon={faTrash} /></button>
+                </div>
+            </CheckUserPermission>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import classes from "./Movies.module.css";
+import classes from "./Reservations.module.css";
 import Caption from "../../components/Caption/Caption";
 import Search from "../../components/Search/Search";
 import React, { useEffect, useState } from 'react';
@@ -7,14 +7,13 @@ import { useSelector } from "react-redux";
 import { CheckUserPermission } from '../../components/Permissions/CheckUserPermission.js';
 
 import { axiosInstance } from "../../api/AxiosInstance";
-import AllMovies from "../../components/Movie/AllMovies/AllMovies";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-function Movies() {
+function Reservations() {
 
-    const [movies, setMovies] = useState([]);
+    const [reservations, setReservations] = useState([]);
     const user = useSelector((state) => state.user.value);
 
     const config = {
@@ -25,29 +24,27 @@ function Movies() {
     }
 
     useEffect(() => {
-        axiosInstance.get("movie", config)
+        axiosInstance.get("reservation", config)
         .then((response) => {
-            setMovies(response.data);
+            setReservations(response.data);
         })
-        .catch((error) => console.log("Error loading movies..."));
+        .catch((error) => console.log("Error loading reservations..."));
     }, [])
 
     return (
         <div className={classes.page}>
             <div className={classes.header}>
-                <Caption caption="Overview of All Movies" />
-                <Search placeholder="Movie name, genre or key word..." />
+                <Caption caption="Overview of All Reservations" />
+                <Search placeholder="Search reservations..." />
             </div>
 
             <CheckUserPermission role="['ROLE_ADMIN']">
-                <button className={classes.button}><FontAwesomeIcon icon={faPlus} /> Add new movie</button>
+                <button className={classes.button}><FontAwesomeIcon icon={faPlus} /> Add new reservation</button>
             </CheckUserPermission>
 
-            <div className={classes.content}>
-                <AllMovies movies={movies} />
-            </div>
+            
         </div>
     );
 }
 
-export default Movies;
+export default Reservations;

@@ -5,7 +5,8 @@ import Movie from '../Movie/Movie';
 function AllMovies({movies}) {
 
     return (
-        <div className={classes.component} > {
+        <div className={classes.component} > 
+        {
             movies.map((movie) => {
                 return <Movie key={movie.id} movie={movie} />
             })
