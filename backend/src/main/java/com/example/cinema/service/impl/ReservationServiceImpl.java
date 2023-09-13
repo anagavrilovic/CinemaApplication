@@ -80,6 +80,13 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<Reservation> findAllActiveByUser(String email) {
+        User user = userService.findByEmail(email);
+        return reservationRepository.findAllByCanceledFalseAndUserId(user.getId());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Reservation findById(Long id) {
         return reservationRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("There is no reservation with this id."));

@@ -3,13 +3,7 @@ import Caption from "../../components/Caption/Caption";
 import Search from "../../components/Search/Search";
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
-
-import { CheckUserPermission } from '../../components/Permissions/CheckUserPermission.js';
-
 import { axiosInstance } from "../../api/AxiosInstance";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Theaters() {
 
@@ -26,8 +20,7 @@ function Theaters() {
     useEffect(() => {
         axiosInstance.get("theater", config)
         .then((response) => {
-            setTheaters(response.data);
-        })
+            setTheaters(response.data);        })
         .catch((error) => console.log("Error loading theaters..."));
     }, [])
 
@@ -38,7 +31,24 @@ function Theaters() {
                 <Search placeholder="Theater name or key word..." />
             </div>
         
-            
+            <table className={classes.table}>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Number of seats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        theaters.map((theater, index) => 
+                            <tr key={index}>
+                                <td>{theater.name}</td>
+                                <td>{theater.numberOfSeats}</td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </table>
         </div>
     );
 }

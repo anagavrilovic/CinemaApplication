@@ -1,7 +1,7 @@
 -- users
 INSERT INTO public.users (email, first_name, last_name, "password", "role", username)
 VALUES ('admin@gmail.com', 'Admin', 'Admin', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'ADMIN', 'admin'),
-       ('ana@valcon.com', 'Ana', 'Gavrilovic', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'ana'),
+       ('ana@gmail.com', 'Ana', 'Gavrilovic', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'ana'),
        ('sanja@gmail.com', 'Sanja', 'Drinic', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'sanja');
 
 --  theatres
@@ -25,3 +25,8 @@ VALUES (1, 'ACTION'),
        (2, 'FANTASY'),
        (3, 'ROMANCE'),
        (3, 'DRAMA');
+
+-- projections
+INSERT INTO public.projection(deleted, number_of_available_seats, ticket_price, movie_id, start_date_and_time, theater_id)
+VALUES (false, 50, 200, 1, '2023-10-22T15:00:00.000', 1),
+       (false, 2, 500, 2, '2023-10-22T15:00:00.000', 3);

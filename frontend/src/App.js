@@ -7,7 +7,6 @@ import Mainpage from './pages/Mainpage/Mainpage';
 import Navbar from './components/Navbar/Navbar';
 import Movies from './pages/Movies/Movies';
 import './App.css';
-import CompanyProfile from './components/Company/CompanyProfile/CompanyProfile/CompanyProfile';
 import Theaters from './pages/Theaters/Theaters';
 import Projections from './pages/Projections/Projections';
 import Reservations from './pages/Reservations/Reservations';
@@ -27,7 +26,6 @@ function App() {
                 <Route path='/projections' element={ <ProtectedRoute Component = {Projections} Roles="['ROLE_ADMIN', 'ROLE_USER']" /> } />
                 <Route path='/reservations' element={ <ProtectedRoute Component = {Reservations} Roles="['ROLE_ADMIN', 'ROLE_USER']" /> } />
                 <Route path='/users' element={ <ProtectedRoute Component = {Users} Roles="['ROLE_ADMIN']" /> } />
-                <Route path='/company/:id/:name' element={ <CompanyProfile /> } />
             </Routes>
         </div>
     );

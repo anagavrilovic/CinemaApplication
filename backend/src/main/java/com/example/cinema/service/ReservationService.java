@@ -15,4 +15,5 @@ public interface ReservationService {
 
     Reservation findById(Long id);
 
+    List<Reservation> findAllActiveByUser(String name);
 }

@@ -5,6 +5,7 @@ import com.example.cinema.dto.ProjectionDto;
 import com.example.cinema.mapper.ProjectionMapper;
 import com.example.cinema.service.ProjectionService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,26 +26,31 @@ public class ProjectionController {
         this.projectionService = projectionService;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public ProjectionDto create(@Valid @RequestBody ProjectionCreationDto projectionCreationDto) {
         return new ProjectionDto(projectionService.create(projectionCreationDto));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}")
     public Long delete(@PathVariable("id") Long id) {
         return projectionService.delete(id);
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping("/available")
     public List<ProjectionDto> findAllAvailableProjections() {
         return ProjectionMapper.projectionsToProjectionDtos(projectionService.findAllAvailable());
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping
     public List<ProjectionDto> findAll() {
         return ProjectionMapper.projectionsToProjectionDtos(projectionService.findAll());
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping("/{id}")
     public ProjectionDto findById(@PathVariable("id") Long id) {
         return new ProjectionDto(projectionService.findById(id));

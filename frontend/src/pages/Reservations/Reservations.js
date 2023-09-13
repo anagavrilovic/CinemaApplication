@@ -9,7 +9,7 @@ import { CheckUserPermission } from '../../components/Permissions/CheckUserPermi
 import { axiosInstance } from "../../api/AxiosInstance";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faBan } from "@fortawesome/free-solid-svg-icons";
 
 function Reservations() {
 
@@ -24,11 +24,20 @@ function Reservations() {
     }
 
     useEffect(() => {
-        axiosInstance.get("reservation", config)
-        .then((response) => {
-            setReservations(response.data);
-        })
-        .catch((error) => console.log("Error loading reservations..."));
+        console.log(user)
+        if(user.role === 'ADMIN') {
+            axiosInstance.get("reservation", config)
+            .then((response) => {
+                setReservations(response.data);
+            })
+            .catch((error) => console.log("Error loading reservations..."));
+        } else if(user.role === 'USER') {
+            axiosInstance.get("reservation/user", config)
+            .then((response) => {
+                setReservations(response.data);
+            })
+            .catch((error) => console.log("Error loading reservations..."));
+        }
     }, [])
 
     return (
@@ -38,11 +47,41 @@ function Reservations() {
                 <Search placeholder="Search reservations..." />
             </div>
 
-            <CheckUserPermission role="['ROLE_ADMIN']">
-                <button className={classes.button}><FontAwesomeIcon icon={faPlus} /> Add new reservation</button>
-            </CheckUserPermission>
+            <button className={classes.button}><FontAwesomeIcon icon={faPlus} /> Make new reservation</button>
 
-            
+            { reservations.length !== 0 ? 
+                <table className={classes.table}>
+                    <thead>
+                        <tr>
+                            <th>User - First Name</th>
+                            <th>User - Last Name</th>
+                            <th>User - Email</th>
+                            <th>Movie</th>
+                            <th>Theater</th>
+                            <th>Start Date and Time</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            reservations.map((reservation, index) => 
+                                <tr key={index}>
+                                    <td>{reservation.userDto.firstName}</td>
+                                    <td>{reservation.userDto.lastName}</td>
+                                    <td>{reservation.userDto.email}</td>
+                                    <td>{reservation.projectionDto.movieDto.name}</td>
+                                    <td>{reservation.projectionDto.theaterDto.name}</td>
+                                    <td>{new Date(reservation.projectionDto.startDateAndTime).toLocaleString('en-GB')}</td>
+                                    <td>
+                                        <button className={classes.buttonDelete}><FontAwesomeIcon icon={faBan} /></button>
+                                    </td>
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table> : 
+                <p className={classes.noEntitiesMessage}>There are no active reservations...</p>
+            }
         </div>
     );
 }

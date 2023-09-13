@@ -12,4 +12,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     List<Reservation> findAllByCanceledFalse();
 
+    List<Reservation> findAllByCanceledFalseAndUserId(@Param("user_id") Long userId);
+
 }

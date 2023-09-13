@@ -7,14 +7,14 @@
 
 .button {
     width: 20%;
-    height: 2.6rem;
+    height: 2.3rem;
     font-size: 1rem;
     background-color: var(--dark-yellow);
     color: white;
     border: 1px solid var(--dark-yellow);
     font-family: inherit;
     cursor: pointer;
-    margin: 3rem 0;
+    margin-top: 3rem;
     align-self: center;
 }
 
@@ -23,6 +23,49 @@
     color: var(--dark-yellow);
     background-color: #f5dede;
     border: 1px solid var(--dark-yellow);
+}
+
+.table {
+    width: 80%;
+    border-collapse: collapse;
+    align-self: center;
+    margin-top: 3rem;
+}
+
+.table tr {
+    height: 45px;
+}
+
+.table th, .table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.buttonDelete {
+    background-color: transparent;
+    color: var(--dark-yellow);
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.buttonDelete:hover, 
+.buttonDelete:active {
+    color: rgb(232, 146, 146);
+}
+
+.noEntitiesMessage {
+    align-self: center;
+    margin-top: 3rem;
 }
 
 @media (max-width: 40rem) {

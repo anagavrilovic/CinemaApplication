@@ -7,14 +7,14 @@
 
 .button {
     width: 20%;
-    height: 2.6rem;
+    height: 2.3rem;
     font-size: 1rem;
     background-color: var(--dark-yellow);
     color: white;
     border: 1px solid var(--dark-yellow);
     font-family: inherit;
     cursor: pointer;
-    margin: 3rem 0;
+    margin-top: 3rem;
     align-self: center;
 }
 
@@ -23,6 +23,73 @@
     color: var(--dark-yellow);
     background-color: #f5dede;
     border: 1px solid var(--dark-yellow);
+}
+
+.filter {
+    align-self: center;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.filter input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.filter input[type="checkbox"]::before {
+    content: '';
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.filter input[type="checkbox"]:checked::before {
+    background-color: var(--dark-yellow); 
+    border-color: var(--dark-yellow);
+    content: '\2714'; /* Checkmark symbol */
+    text-align: center;
+    color: white;
+}  
+
+.table {
+    width: 80%;
+    border-collapse: collapse;
+    align-self: center;
+}
+
+.table tr {
+    height: 45px;
+}
+
+.table th, .table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.buttonDelete {
+    background-color: transparent;
+    color: var(--dark-yellow);
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.buttonDelete:hover, 
+.buttonDelete:active {
+    color: rgb(232, 146, 146);
 }
 
 @media (max-width: 40rem) {

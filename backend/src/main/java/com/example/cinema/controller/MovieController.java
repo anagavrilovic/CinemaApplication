@@ -36,7 +36,7 @@ public class MovieController {
         return new MovieDto(newMovie);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping
     public List<MovieDto> findAll() {
         return MovieMapper.moviesToMovieDtos(movieService.findAll());

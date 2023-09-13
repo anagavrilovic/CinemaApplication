@@ -44,7 +44,9 @@ function Movies() {
             </CheckUserPermission>
 
             <div className={classes.content}>
-                <AllMovies movies={movies} />
+                <div className={classes.movies}>
+                    <AllMovies movies={movies} />
+                </div>
             </div>
         </div>
     );

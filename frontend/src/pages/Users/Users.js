@@ -4,12 +4,7 @@ import Search from "../../components/Search/Search";
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 
-import { CheckUserPermission } from '../../components/Permissions/CheckUserPermission.js';
-
 import { axiosInstance } from "../../api/AxiosInstance";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Users() {
 
@@ -24,7 +19,7 @@ function Users() {
     }
 
     useEffect(() => {
-        axiosInstance.get("projection", config)
+        axiosInstance.get("user", config)
         .then((response) => {
             setUsers(response.data);
         })
@@ -38,6 +33,28 @@ function Users() {
                 <Search placeholder="Search users..." />
             </div>
 
+            <table className={classes.table}>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        users.map((user, index) => 
+                            <tr key={index}>
+                                <td>{user.firstName}</td>
+                                <td>{user.lastName}</td>
+                                <td>{user.email}</td>
+                                <td>{user.username}</td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </table>
             
         </div>
     );
