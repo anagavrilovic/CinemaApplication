@@ -9,17 +9,15 @@ public class UserDto {
     private String lastName;
     private String email;
     private String username;
-    private String password;
     private UserRole role;
 
     public UserDto() {}
 
-    public UserDto(String firstName, String lastName, String email, String username, String password, UserRole role) {
+    public UserDto(String firstName, String lastName, String email, String username, UserRole role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
-        this.password = password;
         this.role = role;
     }
 
@@ -29,7 +27,6 @@ public class UserDto {
         this.lastName = user.getLastName();
         this.email = user.getEmail();
         this.username = user.getUserUsername();
-        this.password = user.getPassword();
         this.role = user.getRole();
     }
 
@@ -47,10 +44,6 @@ public class UserDto {
 
     public String getUsername() {
         return username;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public UserRole getRole() {

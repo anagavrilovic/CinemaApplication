@@ -3,17 +3,20 @@ import Caption from "../../components/Caption/Caption";
 import Search from "../../components/Search/Search";
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { CheckUserPermission } from '../../components/Permissions/CheckUserPermission.js';
 
 import { axiosInstance } from "../../api/AxiosInstance";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrash, faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 function Projections() {
 
     const [projections, setProjections] = useState([]);
+
+    const navigate = useNavigate();
 
     const user = useSelector((state) => state.user.value);
 
@@ -39,14 +42,18 @@ function Projections() {
             .then((response) => {
                 setProjections(response.data);
             })
-            .catch((error) => console.log("Error loading projections..."));
+            .catch(() => console.log("Error loading projections..."));
         } else {
             axiosInstance.get("projection", config)
             .then((response) => {
                 setProjections(response.data);
             })
-            .catch((error) => console.log("Error loading projections..."));
+            .catch(() => console.log("Error loading projections..."));
         }
+    }
+
+    function handleReserveTicketsClick(projectionId) {
+        navigate(`/reserveTickets/${projectionId}`);
     }
 
     return (
@@ -76,6 +83,7 @@ function Projections() {
                         <th>Ticket Price</th>
                         <th>Number of Available Seats</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,6 +97,15 @@ function Projections() {
                                 <td>{projection.movieDto.length}</td>
                                 <td>{projection.ticketPrice}</td>
                                 <td>{projection.numberOfAvailableSeats}</td>
+                                <td>
+                                    <CheckUserPermission role="['ROLE_USER']">
+                                        <button className={classes.buttonReserve} onClick={() => handleReserveTicketsClick(projection.id)} 
+                                            disabled={projection.numberOfAvailableSeats === 0}>
+                                            <FontAwesomeIcon icon={faBookmark}/> 
+                                            Reserve tickets
+                                        </button>
+                                    </CheckUserPermission>
+                                </td>
                                 <td>
                                     <CheckUserPermission role="['ROLE_ADMIN']">
                                         <button className={classes.buttonDelete}><FontAwesomeIcon icon={faTrash} /></button>

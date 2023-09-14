@@ -1,5 +1,6 @@
 package com.example.cinema.controller;
 
+import com.example.cinema.dto.ReservationCreationByUserDto;
 import com.example.cinema.dto.ReservationCreationDto;
 import com.example.cinema.dto.ReservationDto;
 import com.example.cinema.mapper.ReservationMapper;
@@ -27,10 +28,18 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public List<ReservationDto> create(@Valid @RequestBody ReservationCreationDto reservationCreationDto) {
         return ReservationMapper.reservationsToReservationDtos(reservationService.create(reservationCreationDto));
+    }
+
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping("/reserve")
+    public List<ReservationDto> createByUser(@Valid @RequestBody ReservationCreationByUserDto reservationCreationDto,
+                                             Principal principal) {
+        return ReservationMapper.reservationsToReservationDtos(
+                reservationService.createByUser(reservationCreationDto, principal.getName()));
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")

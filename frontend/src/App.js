@@ -11,6 +11,7 @@ import Theaters from './pages/Theaters/Theaters';
 import Projections from './pages/Projections/Projections';
 import Reservations from './pages/Reservations/Reservations';
 import Users from './pages/Users/Users';
+import ReserveTickets from './pages/ReserveTickets/ReserveTickets';
 function App() {
 
     const location = useLocation();
@@ -26,6 +27,7 @@ function App() {
                 <Route path='/projections' element={ <ProtectedRoute Component = {Projections} Roles="['ROLE_ADMIN', 'ROLE_USER']" /> } />
                 <Route path='/reservations' element={ <ProtectedRoute Component = {Reservations} Roles="['ROLE_ADMIN', 'ROLE_USER']" /> } />
                 <Route path='/users' element={ <ProtectedRoute Component = {Users} Roles="['ROLE_ADMIN']" /> } />
+                <Route path='/reserveTickets/:id' element={ <ProtectedRoute Component = {ReserveTickets} Roles="['ROLE_ADMIN', 'ROLE_USER]" /> } />
             </Routes>
         </div>
     );

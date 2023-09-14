@@ -4,12 +4,10 @@ import Search from "../../components/Search/Search";
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 
-import { CheckUserPermission } from '../../components/Permissions/CheckUserPermission.js';
-
 import { axiosInstance } from "../../api/AxiosInstance";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faBan } from "@fortawesome/free-solid-svg-icons";
+import { faBan } from "@fortawesome/free-solid-svg-icons";
 
 function Reservations() {
 
@@ -46,8 +44,6 @@ function Reservations() {
                 <Caption caption="Overview of All Reservations" />
                 <Search placeholder="Search reservations..." />
             </div>
-
-            <button className={classes.button}><FontAwesomeIcon icon={faPlus} /> Make new reservation</button>
 
             { reservations.length !== 0 ? 
                 <table className={classes.table}>

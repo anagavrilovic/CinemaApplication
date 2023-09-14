@@ -1,5 +1,6 @@
 package com.example.cinema.service.impl;
 
+import com.example.cinema.dto.ReservationCreationByUserDto;
 import com.example.cinema.dto.ReservationCreationDto;
 import com.example.cinema.exception.BusinessLogicException;
 import com.example.cinema.exception.EntityNotFoundException;
@@ -55,6 +56,19 @@ public class ReservationServiceImpl implements ReservationService {
         projection.setNumberOfAvailableSeats(projection.getNumberOfAvailableSeats() - reservationCreationDto.getNumberOfTickets());
 
         return newReservations;
+    }
+
+
+    @Override
+    @Transactional
+    public List<Reservation> createByUser(ReservationCreationByUserDto reservationCreationByUserDto, String email) {
+        ReservationCreationDto reservationCreationDto = new ReservationCreationDto(
+                reservationCreationByUserDto.getProjectionId(),
+                userService.findByEmail(email).getId(),
+                reservationCreationByUserDto.getNumberOfTickets()
+        );
+
+        return this.create(reservationCreationDto);
     }
 
     @Override
