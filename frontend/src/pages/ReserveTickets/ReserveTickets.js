@@ -11,6 +11,8 @@ import { axiosInstance } from "../../api/AxiosInstance";
 import Caption from '../../components/Caption/Caption'
 import schema from "../../validationSchemas/ReserveTicketsValidationSchema";
 
+import { CheckUserPermission } from '../../components/Permissions/CheckUserPermission.js';
+
 
 function ReserveTickets() {
 
