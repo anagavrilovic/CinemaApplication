@@ -99,6 +99,34 @@ public class Projection {
         this.numberOfAvailableSeats = numberOfAvailableSeats;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public void setTheater(Theater theater) {
+        this.theater = theater;
+    }
+
+    public void setStartDateAndTime(LocalDateTime startDateAndTime) {
+        this.startDateAndTime = startDateAndTime;
+    }
+
+    public void setTicketPrice(int ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
     public LocalDateTime getEndDateAndTime() {
         return this.getStartDateAndTime().plusMinutes(this.getMovie().getLength());
     }

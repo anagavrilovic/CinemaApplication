@@ -28,33 +28,27 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping
-    public List<ReservationDto> create(@Valid @RequestBody ReservationCreationDto reservationCreationDto) {
-        return ReservationMapper.reservationsToReservationDtos(reservationService.create(reservationCreationDto));
-    }
-
     @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/reserve")
-    public List<ReservationDto> createByUser(@Valid @RequestBody ReservationCreationByUserDto reservationCreationDto,
+    public List<ReservationDto> create(@Valid @RequestBody ReservationCreationByUserDto reservationCreationDto,
                                              Principal principal) {
         return ReservationMapper.reservationsToReservationDtos(
                 reservationService.createByUser(reservationCreationDto, principal.getName()));
     }
 
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @PutMapping("/{id}/cancel")
     public Long cancel(@PathVariable("id") Long id) {
         return reservationService.cancel(id);
     }
 
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping
     public List<ReservationDto> findAllActive() {
         return ReservationMapper.reservationsToReservationDtos(reservationService.findAllActive());
     }
 
-    @PreAuthorize("hasAnyAuthority('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/user")
     public List<ReservationDto> findAllActiveByUser(Principal principal) {
         return ReservationMapper.reservationsToReservationDtos(reservationService.findAllActiveByUser(principal.getName()));

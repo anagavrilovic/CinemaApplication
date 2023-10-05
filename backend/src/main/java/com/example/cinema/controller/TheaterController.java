@@ -27,6 +27,7 @@ public class TheaterController {
         return TheaterMapper.theatersToTheaterDtos(theaterService.findAll());
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping("/{id}")
     public TheaterDto findById(@PathVariable("id") Long id) {
         return new TheaterDto(theaterService.findById(id));

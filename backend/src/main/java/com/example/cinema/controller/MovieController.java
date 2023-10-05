@@ -30,6 +30,7 @@ public class MovieController {
         this.movieService = movieService;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public MovieDto create(@Valid @RequestBody MovieCreationDto movieDto) {
         Movie newMovie = movieService.save(MovieMapper.movieDtoToMovie(movieDto));
@@ -42,16 +43,19 @@ public class MovieController {
         return MovieMapper.moviesToMovieDtos(movieService.findAll());
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping("/{id}")
     public MovieDto findById(@PathVariable("id") Long id) {
         return new MovieDto(movieService.findById(id));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}")
     public Long delete(@PathVariable("id") Long id) {
         return movieService.delete(id);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping
     public MovieDto update(@Valid @RequestBody MovieForUpdateDto movie) {
         return new MovieDto(movieService.update(movie));

@@ -123,6 +123,10 @@ public class Movie {
         this.projections = projections;
     }
 
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
