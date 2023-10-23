@@ -49,6 +49,18 @@ public class Reservation {
         return canceled;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setProjection(Projection projection) {
+        this.projection = projection;
+    }
+
     public void setCanceled(boolean canceled) {
         this.canceled = canceled;
     }

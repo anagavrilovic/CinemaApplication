@@ -5,6 +5,7 @@ import com.example.cinema.model.Theater;
 import com.example.cinema.repository.TheaterRepository;
 import com.example.cinema.service.TheaterService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,11 +20,13 @@ public class TheaterServiceImpl implements TheaterService {
 
 
     @Override
+    @Transactional(readOnly = true)
     public List<Theater> findAll() {
         return theaterRepository.findAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Theater findById(Long id) {
         return theaterRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("There is no theater with this id."));

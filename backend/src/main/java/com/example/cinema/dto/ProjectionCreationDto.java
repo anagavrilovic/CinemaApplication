@@ -49,6 +49,22 @@ public class ProjectionCreationDto {
         return ticketPrice;
     }
 
+    public void setMovieId(Long movieId) {
+        this.movieId = movieId;
+    }
+
+    public void setTheaterId(Long theaterId) {
+        this.theaterId = theaterId;
+    }
+
+    public void setStartDateAndTime(LocalDateTime startDateAndTime) {
+        this.startDateAndTime = startDateAndTime;
+    }
+
+    public void setTicketPrice(int ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
     @Override
     public String toString() {
         return "ProjectionDto{" +

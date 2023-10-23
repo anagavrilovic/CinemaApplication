@@ -35,6 +35,18 @@ public class ReservationCreationDto {
         return numberOfTickets;
     }
 
+    public void setProjectionId(Long projectionId) {
+        this.projectionId = projectionId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setNumberOfTickets(int numberOfTickets) {
+        this.numberOfTickets = numberOfTickets;
+    }
+
     @Override
     public String toString() {
         return "ReservationCreationDto{" +
