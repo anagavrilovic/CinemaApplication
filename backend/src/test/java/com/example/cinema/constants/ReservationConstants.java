@@ -4,6 +4,7 @@ import com.example.cinema.model.Projection;
 import com.example.cinema.model.Reservation;
 import com.example.cinema.model.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class ReservationConstants {
     public static final int ALREADY_RESERVED_TICKETS_BY_USER_NOT_AVAILABLE_MORE = 5;
     public static final int NUMBER_OF_AVAILABLE_SEATS_AVAILABLE_MORE = 40;
     public static final int NUMBER_OF_AVAILABLE_SEATS_NOT_AVAILABLE_MORE = 0;
+    public static LocalDateTime FIVE_DAYS_FROM_NOW = LocalDateTime.now().plusDays(5);
+    public static LocalDateTime FIVE_MINUTES_FROM_NOW = LocalDateTime.now().plusMinutes(5);
 
     public static List<Reservation> getExpectedReservations(Long id, int numberOfTickets) {
         List<Reservation> reservationsExpected = new ArrayList<>();

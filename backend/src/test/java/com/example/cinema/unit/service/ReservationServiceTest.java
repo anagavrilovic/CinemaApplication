@@ -102,6 +102,48 @@ public class ReservationServiceTest {
 
     @ParameterizedTest
     @ArgumentsSource(IdArgumentsProvider.class)
+    void Should_CancelReservation_When_ProjectionIsNotIn2HoursOrLess(Long id) {
+        Reservation reservation = ReservationConstants.getReservation(id);
+        reservation.getProjection().setStartDateAndTime(ReservationConstants.FIVE_DAYS_FROM_NOW);
+        reservation.getProjection().setNumberOfAvailableSeats(0);
+
+        Long expected = id;
+
+        when(mockReservationRepository.findById(any())).thenReturn(Optional.of(reservation));
+
+        Long actual = reservationService.cancel(id);
+
+        assertAll(
+                () -> assertNotNull(actual),
+                () -> assertEquals(expected, actual)
+        );
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(IdArgumentsProvider.class)
+    void Should_ThrowEntityNotFoundException_When_ReservationForCancelingDoesNotExist(Long id) {
+        when(mockReservationRepository.findById(any())).thenReturn(Optional.empty());
+
+        Executable executable = () -> reservationService.cancel(id);
+
+        assertThrows(EntityNotFoundException.class, executable);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(IdArgumentsProvider.class)
+    void Should_ThrowBusinessLogicException_When_ReservationForCancelingIsIn2HoursOrLess(Long id) {
+        Reservation reservation = ReservationConstants.getReservation(id);
+        reservation.getProjection().setStartDateAndTime(ReservationConstants.FIVE_MINUTES_FROM_NOW);
+
+        when(mockReservationRepository.findById(any())).thenReturn(Optional.of(reservation));
+
+        Executable executable = () -> reservationService.cancel(id);
+
+        assertThrows(BusinessLogicException.class, executable);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(IdArgumentsProvider.class)
     void Should_ReturnActiveReservationList(Long id) {
         Reservation reservation = new Reservation();
         reservation.setId(id);
