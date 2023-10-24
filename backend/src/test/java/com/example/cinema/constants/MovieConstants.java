@@ -1,5 +1,6 @@
 package com.example.cinema.constants;
 
+import com.example.cinema.dto.MovieDto;
 import com.example.cinema.model.Movie;
 import com.example.cinema.model.Projection;
 
@@ -60,6 +61,22 @@ public class MovieConstants {
 
         expected.setProjections(List.of(projection1));
         return expected;
+    }
+
+    public static Movie getSimpleMovie(Long id, String name) {
+        Movie movie = new Movie();
+        movie.setId(id);
+        movie.setName(name);
+
+        return movie;
+    }
+
+    public static MovieDto getSimpleMoviedto(Long id, String name) {
+        MovieDto movieDto = new MovieDto();
+        movieDto.setId(id);
+        movieDto.setName(name);
+
+        return movieDto;
     }
 
 }

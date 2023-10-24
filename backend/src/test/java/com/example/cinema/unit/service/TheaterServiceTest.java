@@ -2,6 +2,7 @@ package com.example.cinema.unit.service;
 
 import com.example.cinema.arguments_provider.IdArgumentsProvider;
 import com.example.cinema.arguments_provider.IdAndNameArgumentsProvider;
+import com.example.cinema.constants.TheaterConstants;
 import com.example.cinema.exception.EntityNotFoundException;
 import com.example.cinema.model.Theater;
 import com.example.cinema.repository.TheaterRepository;
@@ -33,10 +34,8 @@ public class TheaterServiceTest {
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)
-    void Should_ReturnTheaterList(Long theaterId, String theaterName) {
-        Theater theater = new Theater();
-        theater.setId(theaterId);
-        theater.setName(theaterName);
+    void Should_ReturnTheaterList(Long id, String name) {
+        Theater theater = TheaterConstants.getSimpleTheater(id, name);
 
         List<Theater> theatersExpected = Collections.singletonList(theater);
 
@@ -55,8 +54,7 @@ public class TheaterServiceTest {
     @ParameterizedTest
     @ArgumentsSource(IdArgumentsProvider.class)
     void Should_ReturnTheaterWithGivenId_WhenTheaterExists(Long id) {
-        Theater expected = new Theater();
-        expected.setId(id);
+        Theater expected = TheaterConstants.getSimpleTheater(id, null);
 
         when(mockTheaterRepository.findById(any())).thenReturn(Optional.of(expected));
 

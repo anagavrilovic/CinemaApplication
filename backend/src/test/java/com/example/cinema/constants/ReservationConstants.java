@@ -1,8 +1,9 @@
 package com.example.cinema.constants;
 
-import com.example.cinema.model.Projection;
-import com.example.cinema.model.Reservation;
-import com.example.cinema.model.User;
+import com.example.cinema.dto.ProjectionDto;
+import com.example.cinema.dto.ReservationDto;
+import com.example.cinema.dto.UserDto;
+import com.example.cinema.model.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class ReservationConstants {
 
     public static Reservation getReservation(Long id) {
         Reservation reservation = new Reservation();
+        reservation.setId(id);
 
         User user = new User();
         user.setId(id);
@@ -52,6 +54,8 @@ public class ReservationConstants {
         Projection projection = new Projection();
         projection.setId(id);
         projection.setNumberOfAvailableSeats(NUMBER_OF_AVAILABLE_SEATS_AVAILABLE_MORE);
+        projection.setMovie(new Movie());
+        projection.setTheater(new Theater());
 
         return projection;
     }
@@ -62,5 +66,14 @@ public class ReservationConstants {
         projection.setNumberOfAvailableSeats(NUMBER_OF_AVAILABLE_SEATS_NOT_AVAILABLE_MORE);
 
         return projection;
+    }
+
+    public static ReservationDto getSimpleReservationDto(Long id) {
+        ReservationDto reservationDto = new ReservationDto();
+        reservationDto.setId(id);
+        reservationDto.setProjectionDto(new ProjectionDto());
+        reservationDto.setUserDto(new UserDto());
+
+        return reservationDto;
     }
 }

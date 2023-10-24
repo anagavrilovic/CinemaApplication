@@ -41,13 +41,13 @@ class MovieServiceTest {
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)
-    void Should_CreateNewMovie_When_MovieNameNotAlreadyExists(Long movieId, String movieName) {
+    void Should_CreateNewMovie_When_MovieNameNotAlreadyExists(Long id, String name) {
         Movie request = new Movie();
-        request.setName(movieName);
+        request.setName(name);
 
         Movie expected = new Movie();
-        expected.setId(movieId);
-        expected.setName(movieName);
+        expected.setId(id);
+        expected.setName(name);
 
         when(mockMovieRepository.findByNameAndDeletedFalse(any())).thenReturn(Optional.empty());
         when(mockMovieRepository.save(any())).thenReturn(expected);
@@ -63,13 +63,13 @@ class MovieServiceTest {
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)
-    void Should_ThrowObjectAlreadyExistsException_When_MovieNameAlreadyExists(Long movieId, String movieName) {
+    void Should_ThrowObjectAlreadyExistsException_When_MovieNameAlreadyExists(Long id, String name) {
         Movie request = new Movie();
-        request.setName(movieName);
+        request.setName(name);
 
         Movie expected = new Movie();
-        expected.setId(movieId);
-        expected.setName(movieName);
+        expected.setId(id);
+        expected.setName(name);
 
         when(mockMovieRepository.findByNameAndDeletedFalse(any())).thenReturn(Optional.of(expected));
 
@@ -80,10 +80,10 @@ class MovieServiceTest {
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)
-    void Should_ReturnMovieList(Long movieId, String movieName) {
+    void Should_ReturnMovieList(Long id, String name) {
         Movie movie = new Movie();
-        movie.setId(movieId);
-        movie.setName(movieName);
+        movie.setId(id);
+        movie.setName(name);
         movie.setDeleted(false);
 
         List<Movie> moviesExpected = Collections.singletonList(movie);

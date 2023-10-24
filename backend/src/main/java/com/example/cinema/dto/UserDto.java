@@ -30,6 +30,10 @@ public class UserDto {
         this.role = user.getRole();
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -50,4 +54,11 @@ public class UserDto {
         return role;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

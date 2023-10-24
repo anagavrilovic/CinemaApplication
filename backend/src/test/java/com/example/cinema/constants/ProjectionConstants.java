@@ -1,5 +1,8 @@
 package com.example.cinema.constants;
 
+import com.example.cinema.dto.MovieDto;
+import com.example.cinema.dto.ProjectionDto;
+import com.example.cinema.dto.TheaterDto;
 import com.example.cinema.model.Movie;
 import com.example.cinema.model.Projection;
 import com.example.cinema.model.Theater;
@@ -55,5 +58,21 @@ public class ProjectionConstants {
         projection2.setMovie(movie);
 
         return List.of(projection1, projection2);
+    }
+
+    public static Projection getSimpleProjection(Long id) {
+        Projection projection = new Projection();
+        projection.setId(id);
+        projection.setMovie(getMovieForProjection(id));
+        projection.setTheater(getTheaterForProjection(id));
+
+        return projection;
+    }
+
+    public static ProjectionDto getSimpleProjectionDto(Long id) {
+        ProjectionDto projectionDto = new ProjectionDto();
+        projectionDto.setId(id);
+
+        return projectionDto;
     }
 }

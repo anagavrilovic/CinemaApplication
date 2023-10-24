@@ -63,6 +63,18 @@ public class ProjectionDto {
         return numberOfAvailableSeats;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setMovieDto(MovieDto movieDto) {
+        this.movieDto = movieDto;
+    }
+
+    public void setTheaterDto(TheaterDto theaterDto) {
+        this.theaterDto = theaterDto;
+    }
+
     @Override
     public String toString() {
         return "ProjectionDto{" +

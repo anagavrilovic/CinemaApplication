@@ -37,6 +37,18 @@ public class ReservationDto {
         return projectionDto;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUserDto(UserDto userDto) {
+        this.userDto = userDto;
+    }
+
+    public void setProjectionDto(ProjectionDto projectionDto) {
+        this.projectionDto = projectionDto;
+    }
+
     @Override
     public String toString() {
         return "ReservationDto{" +
