@@ -12,7 +12,7 @@ public class EmailArgumentsProvider implements ArgumentsProvider {
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
         return Stream.iterate(1, i -> i + 1)
-                .limit(SharedConstants.numberOfTestIterations)
+                .limit(SharedConstants.numberOfUnitTestIterations)
                 .map(i -> Arguments.of(i + "@mail.com"));
     }
 }

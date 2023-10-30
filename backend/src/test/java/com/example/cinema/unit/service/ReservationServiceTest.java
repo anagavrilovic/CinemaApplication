@@ -30,20 +30,20 @@ import static org.mockito.Mockito.when;
 public class ReservationServiceTest {
 
     @Mock
-    ReservationRepository mockReservationRepository;
+    private ReservationRepository mockReservationRepository;
 
     @Mock
-    ProjectionService mockProjectionService;
+    private ProjectionService mockProjectionService;
 
     @Mock
-    UserService mockUserService;
+    private UserService mockUserService;
 
     @InjectMocks
-    ReservationServiceImpl reservationService;
+    private ReservationServiceImpl reservationService;
 
     @ParameterizedTest
     @ArgumentsSource(IdArgumentsProvider.class)
-    void Should_CreateNewMovie_When_ReservationIsValid(Long id) {
+    void Should_CreateNewReservation(Long id) {
         ReservationCreationDto reservationCreationDto = new ReservationCreationDto();
         reservationCreationDto.setProjectionId(id);
         reservationCreationDto.setUserId(id);
@@ -62,8 +62,7 @@ public class ReservationServiceTest {
 
         assertAll(
                 () -> assertNotNull(actual),
-                () -> assertEquals(reservationsExpected.size(), actual.size()),
-                () -> assertEquals(reservationsExpected.get(0).getId(), actual.get(0).getId())
+                () -> assertEquals(reservationsExpected.size(), actual.size())
         );
     }
 

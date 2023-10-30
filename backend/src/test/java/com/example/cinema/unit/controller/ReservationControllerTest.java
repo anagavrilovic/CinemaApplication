@@ -27,10 +27,10 @@ import static org.mockito.Mockito.when;
 public class ReservationControllerTest {
 
     @Mock
-    ReservationService mockReservationService;
+    private ReservationService mockReservationService;
 
     @InjectMocks
-    ReservationController reservationController;
+    private ReservationController reservationController;
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)

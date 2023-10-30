@@ -7,11 +7,11 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 
 import java.util.stream.Stream;
 
-public class NameArgumentsProvider implements ArgumentsProvider {
+public class NonExistingIdsArgumentsProvider implements ArgumentsProvider {
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
-        return Stream.iterate(1, i -> i + 1)
-                .limit(SharedConstants.numberOfUnitTestIterations)
-                .map(i -> Arguments.of("Movie Name " + i));
+        return Stream.iterate(150, i -> i + 1)
+                .limit(SharedConstants.numberOfIntegrationTestIterations)
+                .map(i -> Arguments.of(Long.valueOf(i)));
     }
 }

@@ -10,6 +10,7 @@ import com.example.cinema.exception.ObjectAlreadyExistsException;
 import com.example.cinema.model.Movie;
 import com.example.cinema.repository.MovieRepository;
 import com.example.cinema.service.impl.MovieServiceImpl;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,6 +18,8 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
 import java.util.List;
@@ -34,20 +37,16 @@ import static org.mockito.Mockito.when;
 class MovieServiceTest {
 
     @Mock
-    MovieRepository mockMovieRepository;
+    private MovieRepository mockMovieRepository;
 
     @InjectMocks
-    MovieServiceImpl movieService;
+    private MovieServiceImpl movieService;
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)
     void Should_CreateNewMovie_When_MovieNameNotAlreadyExists(Long id, String name) {
-        Movie request = new Movie();
-        request.setName(name);
-
-        Movie expected = new Movie();
-        expected.setId(id);
-        expected.setName(name);
+        Movie request = MovieConstants.getSimpleMovie(id, name);
+        Movie expected = MovieConstants.getSimpleMovie(id, name);
 
         when(mockMovieRepository.findByNameAndDeletedFalse(any())).thenReturn(Optional.empty());
         when(mockMovieRepository.save(any())).thenReturn(expected);
@@ -64,12 +63,8 @@ class MovieServiceTest {
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)
     void Should_ThrowObjectAlreadyExistsException_When_MovieNameAlreadyExists(Long id, String name) {
-        Movie request = new Movie();
-        request.setName(name);
-
-        Movie expected = new Movie();
-        expected.setId(id);
-        expected.setName(name);
+        Movie request = MovieConstants.getSimpleMovie(id, name);
+        Movie expected = MovieConstants.getSimpleMovie(id, name);
 
         when(mockMovieRepository.findByNameAndDeletedFalse(any())).thenReturn(Optional.of(expected));
 
@@ -81,10 +76,7 @@ class MovieServiceTest {
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)
     void Should_ReturnMovieList(Long id, String name) {
-        Movie movie = new Movie();
-        movie.setId(id);
-        movie.setName(name);
-        movie.setDeleted(false);
+        Movie movie = MovieConstants.getSimpleMovie(id, name);
 
         List<Movie> moviesExpected = Collections.singletonList(movie);
 
@@ -104,9 +96,7 @@ class MovieServiceTest {
     @ParameterizedTest
     @ArgumentsSource(IdArgumentsProvider.class)
     void Should_ReturnMovieWithGivenId_WhenMovieExists(Long id) {
-        Movie expected = new Movie();
-        expected.setId(id);
-        expected.setDeleted(false);
+        Movie expected = MovieConstants.getSimpleMovie(id, "");
 
         when(mockMovieRepository.findByIdAndDeletedFalse(any())).thenReturn(Optional.of(expected));
 

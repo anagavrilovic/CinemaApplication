@@ -32,16 +32,16 @@ import static org.mockito.Mockito.when;
 public class ProjectionServiceTest {
 
     @Mock
-    ProjectionRepository mockProjectionRepository;
+    private ProjectionRepository mockProjectionRepository;
 
     @Mock
-    MovieService mockMovieService;
+    private MovieService mockMovieService;
 
     @Mock
-    TheaterService mockTheaterService;
+    private TheaterService mockTheaterService;
 
     @InjectMocks
-    ProjectionServiceImpl projectionService;
+    private ProjectionServiceImpl projectionService;
 
     @ParameterizedTest
     @ArgumentsSource(IdArgumentsProvider.class)

@@ -26,10 +26,10 @@ import static org.mockito.Mockito.when;
 public class UserControllerTest {
 
     @Mock
-    UserService mockUserService;
+    private UserService mockUserService;
 
     @InjectMocks
-    UserController userController;
+    private UserController userController;
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)

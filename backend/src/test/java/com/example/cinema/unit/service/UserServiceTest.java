@@ -30,10 +30,10 @@ import static org.mockito.Mockito.when;
 public class UserServiceTest {
 
     @Mock
-    UserRepository mockUserRepository;
+    private UserRepository mockUserRepository;
 
     @InjectMocks
-    UserServiceImpl userService;
+    private UserServiceImpl userService;
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)

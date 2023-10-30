@@ -1,8 +1,6 @@
 package com.example.cinema.constants;
 
-import com.example.cinema.dto.MovieDto;
 import com.example.cinema.dto.ProjectionDto;
-import com.example.cinema.dto.TheaterDto;
 import com.example.cinema.model.Movie;
 import com.example.cinema.model.Projection;
 import com.example.cinema.model.Theater;
@@ -12,10 +10,23 @@ import java.util.List;
 
 public class ProjectionConstants {
 
+    public static final Long MOVIE_ID = 1L;
+    public static final Long THEATER_ID = 1L;
+    public static final Integer TICKET_PRICE = 200;
+    public static final Integer MOVIE_LENGTH = 150;
+    public static final LocalDateTime ONE_DAY_BEFORE_NOW = LocalDateTime.now().minusDays(1);
+    public static final LocalDateTime ONE_DAY_AFTER_NOW = LocalDateTime.now().plusDays(1);
+
+    public static final Long DB_ID = 1L;
+    public static final Integer DB_COUNT = 3;
+    public static final Long DB_MOVIE_ID = 7L;
+    public static final Long DB_THEATER_ID = 2L;
+    public static final Integer DB_TICKET_PRICE = 500;
+
     public static Movie getMovieForProjection(Long id) {
         Movie movie = new Movie();
         movie.setId(id);
-        movie.setLength(150);
+        movie.setLength(MOVIE_LENGTH);
 
         return movie;
     }

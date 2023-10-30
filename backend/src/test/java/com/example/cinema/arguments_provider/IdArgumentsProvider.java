@@ -12,7 +12,7 @@ public class IdArgumentsProvider implements ArgumentsProvider {
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
         return Stream.iterate(1, i -> i + 1)
-                .limit(SharedConstants.numberOfTestIterations)
-                .map(i -> Arguments.of(String.valueOf(i)));
+                .limit(SharedConstants.numberOfUnitTestIterations)
+                .map(i -> Arguments.of(Long.valueOf(i)));
     }
 }

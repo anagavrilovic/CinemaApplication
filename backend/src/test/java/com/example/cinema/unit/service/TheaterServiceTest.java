@@ -27,10 +27,10 @@ import static org.mockito.Mockito.when;
 public class TheaterServiceTest {
 
     @Mock
-    TheaterRepository mockTheaterRepository;
+    private TheaterRepository mockTheaterRepository;
 
     @InjectMocks
-    TheaterServiceImpl theaterService;
+    private TheaterServiceImpl theaterService;
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)

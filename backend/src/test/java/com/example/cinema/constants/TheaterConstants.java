@@ -7,6 +7,12 @@ import java.util.ArrayList;
 
 public class TheaterConstants {
 
+    public static final Integer DB_COUNT = 3;
+    public static final Long DB_ID = 1L;
+    public static final String DB_NAME = "Grand Room";
+    public static final Integer DB_NUMBER_OF_SEATS = 50;
+
+
     public static Theater getSimpleTheater(Long id, String name) {
         Theater theater = new Theater();
         theater.setId(id);

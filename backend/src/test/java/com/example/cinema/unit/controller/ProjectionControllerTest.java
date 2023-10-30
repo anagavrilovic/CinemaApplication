@@ -25,10 +25,10 @@ import static org.mockito.Mockito.when;
 public class ProjectionControllerTest {
 
     @Mock
-    ProjectionService mockProjectionService;
+    private ProjectionService mockProjectionService;
 
     @InjectMocks
-    ProjectionController projectionController;
+    private ProjectionController projectionController;
 
     @ParameterizedTest
     @ArgumentsSource(IdArgumentsProvider.class)

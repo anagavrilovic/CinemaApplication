@@ -14,6 +14,11 @@ public class ReservationCreationByUserDto {
     public ReservationCreationByUserDto() {
     }
 
+    public ReservationCreationByUserDto(Long projectionId, int numberOfTickets) {
+        this.projectionId = projectionId;
+        this.numberOfTickets = numberOfTickets;
+    }
+
     public Long getProjectionId() {
         return projectionId;
     }

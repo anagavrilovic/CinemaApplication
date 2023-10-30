@@ -26,10 +26,10 @@ import static org.mockito.Mockito.when;
 public class MovieControllerTest {
 
     @Mock
-    MovieService mockMovieService;
+    private MovieService mockMovieService;
 
     @InjectMocks
-    MovieController movieController;
+    private MovieController movieController;
 
     @ParameterizedTest
     @ArgumentsSource(IdAndNameArgumentsProvider.class)
