@@ -19,15 +19,21 @@ jobs:
     - name: Setup gecko driver
       uses: browser-actions/setup-geckodriver@latest
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
+    - name: Display GeckoDriver path
+      run: |
+        echo "GeckoDriver is installed at: $GITHUB_WORKSPACE/.browser"
+        ls -l $GITHUB_WORKSPACE
+        which geckodriver
 
-    - name: Start docker compose
-      run: docker-compose up -d
-
-    - name: Build with Maven
-      run: mvn -B package --file backend/pom.xml
+#    - name: Set up JDK 17
+#      uses: actions/setup-java@v3
+#      with:
+#        java-version: '17'
+#        distribution: 'temurin'
+#        cache: maven
+#
+#    - name: Start docker compose
+#      run: docker-compose up -d
+#
+#    - name: Build with Maven
+#      run: mvn -B package --file backend/pom.xml
