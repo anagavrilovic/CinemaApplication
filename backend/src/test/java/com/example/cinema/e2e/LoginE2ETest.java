@@ -19,14 +19,14 @@ public class LoginE2ETest extends BaseSeleniumE2ETest {
     private static final String APP_TITLE = "Cinescape";
     private static final String PAGE_CAPTION = "Log in";
 
-//    @Test
-//    void Should_ShowTitleAndCaptionVisibleHtmlElements() {
-//        WebElement caption = driver.findElement(By.id("caption"));
-//
-//        assertThat(caption.getText()).isEqualTo(PAGE_CAPTION);
-//        assertThat(driver.getTitle()).isEqualTo(APP_TITLE);
-//    }
-//
+    @Test
+    void Should_ShowTitleAndCaptionVisibleHtmlElements() {
+        WebElement caption = driver.findElement(By.id("caption"));
+
+        assertThat(caption.getText()).isEqualTo(PAGE_CAPTION);
+        assertThat(driver.getTitle()).isEqualTo(APP_TITLE);
+    }
+
 //    @ParameterizedTest
 //    @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
 //    void Should_LoginSuccessfully(String username, String password) throws InterruptedException {
