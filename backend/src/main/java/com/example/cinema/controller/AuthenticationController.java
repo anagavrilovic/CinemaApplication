@@ -26,7 +26,7 @@ public class AuthenticationController {
         return new UserDto(authenticationService.register(user));
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public UserLoginInfoDto login(@Valid @RequestBody LoginDto dto) {
         UserLoginInfoDto info = authenticationService.login(dto.getEmail(), dto.getPassword());
         return info;

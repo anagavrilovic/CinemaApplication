@@ -40,18 +40,18 @@ function Login(props) {
 
     return (
         <div className={classes.login}>
-            <h1 className={classes.caption}>Log in</h1>
+            <h1 id="caption" className={classes.caption}>Log in</h1>
             <form onSubmit={submitHandler} className={classes.form}>
                 <div className={classes.errorMessage}> {error ? "Wrong email or password! Try again." : ""}</div>
 
                 <div className={classes.formItem}>
-                    <input type="text" required placeholder="Email" onChange={() => setError(false)} />
+                    <input type="text" id="username_input" required placeholder="Email" onChange={() => setError(false)} />
                 </div>
                 <div className={classes.formItem}>
-                    <input type="password" required placeholder="Password" onChange={() => setError(false)} />
+                    <input type="password" id="password_input" required placeholder="Password" onChange={() => setError(false)} />
                 </div>
 
-                <button className={classes.buttonLogIn}>Log in</button>
+                <button id="login_button" className={classes.buttonLogIn}>Log in</button>
                 <a href="/#" className={classes.registerLink} onClick={() => props.navigateToRegister()} >
                     Don't have an account? Register here.
                 </a>

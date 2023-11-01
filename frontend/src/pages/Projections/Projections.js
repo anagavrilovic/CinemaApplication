@@ -99,7 +99,7 @@ function Projections() {
                                 <td>{projection.numberOfAvailableSeats}</td>
                                 <td>
                                     <CheckUserPermission role="['ROLE_USER']">
-                                        <button className={classes.buttonReserve} onClick={() => handleReserveTicketsClick(projection.id)} 
+                                        <button id={`reserve_projection_button_${projection.id}`} className={classes.buttonReserve} onClick={() => handleReserveTicketsClick(projection.id)} 
                                             disabled={projection.numberOfAvailableSeats === 0}>
                                             <FontAwesomeIcon icon={faBookmark}/> 
                                             Reserve tickets

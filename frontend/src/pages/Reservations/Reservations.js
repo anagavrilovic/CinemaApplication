@@ -65,7 +65,9 @@ function Reservations() {
                                     <td>{reservation.userDto.firstName}</td>
                                     <td>{reservation.userDto.lastName}</td>
                                     <td>{reservation.userDto.email}</td>
-                                    <td>{reservation.projectionDto.movieDto.name}</td>
+                                    <td id={"reservation_movie_name_" + reservation.projectionDto.movieDto.name} >
+                                        {reservation.projectionDto.movieDto.name}
+                                    </td>
                                     <td>{reservation.projectionDto.theaterDto.name}</td>
                                     <td>{new Date(reservation.projectionDto.startDateAndTime).toLocaleString('en-GB')}</td>
                                     <td>

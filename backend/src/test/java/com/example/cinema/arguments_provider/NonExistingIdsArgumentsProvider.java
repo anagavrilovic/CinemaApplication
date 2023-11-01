@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class NonExistingIdsArgumentsProvider implements ArgumentsProvider {
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
-        return Stream.iterate(150, i -> i + 1)
+        return Stream.iterate(1000, i -> i + 1)
                 .limit(SharedConstants.numberOfIntegrationTestIterations)
                 .map(i -> Arguments.of(Long.valueOf(i)));
     }

@@ -1,7 +1,7 @@
 -- users
 INSERT INTO users (email, first_name, last_name, password, role, username)
 VALUES ('admin@gmail.com', 'Admin', 'Admin', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'ADMIN', 'admin'),
-       ('user@gmail.com', 'User', 'User', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user'),
+       ('user@gmail.com', 'User', 'User', '$2y$10$QTaWTVMY4Vk1C8TkLOeC9enSmQbnL9h31g.9gFcjCY4iluXhpaLMq', 'USER', 'user'),
        ('ana@gmail.com', 'Ana', 'Gavrilovic', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'ana'),
        ('sanja@gmail.com', 'Sanja', 'Drinic', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'sanja');
 

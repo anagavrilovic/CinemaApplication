@@ -29,7 +29,7 @@ function Navbar() {
 
             <nav className={classes.nav}>
                 <div className={classes.navLogo}>
-                    <Link to="/home" className={classes.logoLink}>
+                    <Link to="/home" id="home_tab" className={classes.logoLink}>
                         <span className={classes.logo}>C</span>
                         <span className={classes.logoText}>inescape</span>
                     </Link>
@@ -39,25 +39,25 @@ function Navbar() {
                     </div>
                 </div>
                 <div>
-                    <Link to="/movies" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
+                    <Link to="/movies" id="movies_tab" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
                         Movies
                     </Link>
-                    <Link to="/theaters" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
+                    <Link to="/theaters" id="theaters_tab" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
                         Theaters
                     </Link>
-                    <Link to="/projections" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
+                    <Link to="/projections" id="projections_tab" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
                         Projections
                     </Link>
-                    <Link to="/reservations" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
+                    <Link to="/reservations" id="reservations_tab" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
                         Reservations
                     </Link>
                     <CheckUserPermission role="['ROLE_ADMIN']">
-                        <Link to="/users"  className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`} >
+                        <Link to="/users" id="users_tab" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`} >
                             Users
                         </Link>
                     </CheckUserPermission>
                     
-                    <Link to="/" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
+                    <Link to="/" id="logout_tab" className={`${classes.link} ${location.pathname === "/home" ? classes.linkDarkTheme : classes.linkLightTheme}`}>
                         <span className={classes.logout}>
                             <span className={classes.username}>{JSON.parse(localStorage.getItem("user")).username}</span>
                             <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogOut} />
@@ -72,27 +72,27 @@ function Navbar() {
             {mobileNavClicked ? (
                 <nav className={classes.mobileNav}>
                     <div className={classes.mobileNavLinks}>
-                        <Link to="/home" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)} >
+                        <Link to="/home" id="home_tab" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)} >
                             Homepage
                         </Link>
-                        <Link to="/movies" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)} >
+                        <Link to="/movies" id="movies_tab" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)} >
                             Movies
                         </Link>
-                        <Link to="/theaters" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)}  >
+                        <Link to="/theaters" id="theaters_tab" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)}  >
                             Theaters
                         </Link>
-                        <Link to="/projections" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)}  >
+                        <Link to="/projections" id="projections_tab" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)}  >
                             Projections
                         </Link>
-                        <Link to="/reservations" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)}  >
+                        <Link to="/reservations" id="reservations_tab" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)}  >
                             Reservations
                         </Link>
                         <CheckUserPermission role="['ROLE_ADMIN']">
-                            <Link to="/users" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)}  >
+                            <Link to="/users" id="users_tab" className={classes.mobileLink} onClick={() => setMobileNavClicked(false)}  >
                                 Users
                             </Link>
                         </CheckUserPermission>
-                        <Link to="/" className={classes.mobileLink}>
+                        <Link to="/" id="logout_tab" className={classes.mobileLink}>
                             LogOut <FontAwesomeIcon icon={faRightFromBracket} />
                         </Link>
                     </div>

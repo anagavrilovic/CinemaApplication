@@ -83,4 +83,15 @@ public class UserCreationDto {
         this.password = password;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
 }

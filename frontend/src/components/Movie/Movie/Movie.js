@@ -32,7 +32,7 @@ function Movie(movie) {
     }
 
     return (
-        <div className={classes.component}>
+        <div id={`movie_${movie.id}`} className={classes.component}>
             <div className={classes.movieName}>
                 <h3>{movie.movie.name}</h3>
             </div>

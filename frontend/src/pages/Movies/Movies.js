@@ -35,7 +35,7 @@ function Movies() {
     return (
         <div className={classes.page}>
             <div className={classes.header}>
-                <Caption caption="Overview of All Movies" />
+                <Caption id="movies_caption" caption="Overview of All Movies" />
                 <Search placeholder="Movie name, genre or key word..." />
             </div>
 
@@ -44,7 +44,7 @@ function Movies() {
             </CheckUserPermission>
 
             <div className={classes.content}>
-                <div className={classes.movies}>
+                <div id="movie_list" className={classes.movies}>
                     <AllMovies movies={movies} />
                 </div>
             </div>

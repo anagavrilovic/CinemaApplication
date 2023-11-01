@@ -59,15 +59,15 @@ function ReserveTickets() {
             <form onSubmit={handleSubmit(reservationHandler)} className={classes.form}>
 
                 <div className={classes.formItem}>
-                    <input type='number' placeholder='Number of tickets' min="1"
+                    <input id="number_of_tickets_input" type='number' placeholder='Number of tickets' min="1"
                         className={errors.numberOfTickets ? classes.errorInput : ''}
                         {...register("numberOfTickets")} />
                     <div className={classes.errorMessage}>{errors.numberOfTickets?.message}</div>
                 </div>
 
-                <div className={classes.serverErrorMessage}>
+                <div id="reserve_tickets_error" className={classes.serverErrorMessage}>
                         {serverError ? serverError : ""}</div>
-                <button className={classes.button}>Make a reservation</button>
+                <button id="reserve_button" className={classes.button}>Make a reservation</button>
             </form>
         </div>
     )
