@@ -14,7 +14,7 @@ public abstract class BaseSeleniumE2ETest {
 
     protected String BASE_URL = "http://localhost:3000";
 
-    protected boolean isHeadless = false;
+    protected boolean isHeadless = true;
 
     protected WebDriver driver;
 
