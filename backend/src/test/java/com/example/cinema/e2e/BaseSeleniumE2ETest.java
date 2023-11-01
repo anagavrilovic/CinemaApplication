@@ -20,7 +20,7 @@ public abstract class BaseSeleniumE2ETest {
 
     @BeforeAll
     static void setUpAll() {
-        System.setProperty("webdriver.firefox.bin", "/usr/bin/firefox");
+        //System.setProperty("webdriver.firefox.bin", "/usr/bin/firefox");
         System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
     }
 
