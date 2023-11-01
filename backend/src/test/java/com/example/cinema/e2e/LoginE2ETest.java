@@ -27,37 +27,37 @@ public class LoginE2ETest extends BaseSeleniumE2ETest {
         assertThat(driver.getTitle()).isEqualTo(APP_TITLE);
     }
 
-//    @ParameterizedTest
-//    @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
-//    void Should_LoginSuccessfully(String username, String password) throws InterruptedException {
-//        login(username, password);
-//        Thread.sleep(1000);
-//
-//        assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/home");
-//    }
-//
-//    @ParameterizedTest
-//    @ArgumentsSource(NotValidUsernameAndPasswordArgumentsProvider.class)
-//    void Should_NotLogin_When_UsernameOrPasswordNotValid(String username, String password) throws InterruptedException {
-//        login(username, password);
-//        Thread.sleep(1000);
-//
-//        WebElement loginErrorMessage = driver.findElement(By.id("login_error_message"));
-//
-//        assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/");
-//        assertThat(loginErrorMessage.getText()).isEqualTo("Wrong email or password! Try again.");
-//    }
-//
-//    @ParameterizedTest
-//    @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
-//    void Should_LogoutSuccessfully(String username, String password) throws InterruptedException {
-//        login(username, password);
-//        Thread.sleep(1000);
-//
-//        WebElement logoutButton = driver.findElement(By.id("logout_tab"));
-//        logoutButton.click();
-//
-//        assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/");
-//    }
+    @ParameterizedTest
+    @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
+    void Should_LoginSuccessfully(String username, String password) throws InterruptedException {
+        login(username, password);
+        Thread.sleep(1000);
+
+        assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/home");
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(NotValidUsernameAndPasswordArgumentsProvider.class)
+    void Should_NotLogin_When_UsernameOrPasswordNotValid(String username, String password) throws InterruptedException {
+        login(username, password);
+        Thread.sleep(1000);
+
+        WebElement loginErrorMessage = driver.findElement(By.id("login_error_message"));
+
+        assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/");
+        assertThat(loginErrorMessage.getText()).isEqualTo("Wrong email or password! Try again.");
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
+    void Should_LogoutSuccessfully(String username, String password) throws InterruptedException {
+        login(username, password);
+        Thread.sleep(1000);
+
+        WebElement logoutButton = driver.findElement(By.id("logout_tab"));
+        logoutButton.click();
+
+        assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/");
+    }
 
 }
