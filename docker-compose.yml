@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: anagavrilovic/cinemaaplication_frontend:latest
+#    build:
+#      context: frontend/
+#      dockerfile: Dockerfile
+#      args:
+#        REACT_APP_API_BASE_URL: http://127.0.0.1:8080/
+    ports:
+      - "3000:80"
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - frontend
+
+  backend:
+    image: anagavrilovic/cinemaaplication_backend:latest
+#    build:
+#      context: backend/
+#      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=cinema
+    networks:
+      - backend
+      - frontend
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=cinema
+    ports:
+      - '5432:5432'
+    networks:
+      - backend
+
+networks:
+  backend:
+  frontend:
