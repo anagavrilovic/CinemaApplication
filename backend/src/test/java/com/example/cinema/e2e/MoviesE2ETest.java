@@ -1,7 +1,10 @@
 package com.example.cinema.e2e;
 
+import com.example.cinema.arguments_provider.UsernameAndPasswordArgumentsProvider;
 import com.example.cinema.model.Theater;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -11,9 +14,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class MoviesE2ETest extends BaseSeleniumE2ETest {
 
-    @Test
-    void Should_ListMoviesForLoggedUser() throws InterruptedException {
-        login();
+    @ParameterizedTest
+    @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
+    void Should_ListMoviesForLoggedUser(String username, String password) throws InterruptedException {
+        login(username, password);
         Thread.sleep(1000);
 
         WebElement moviesTab = driver.findElement(By.id("movies_tab"));
@@ -27,9 +31,10 @@ public class MoviesE2ETest extends BaseSeleniumE2ETest {
         assertThat(inceptionMovie).isNotNull();
     }
 
-    @Test
-    void Should_CountMoviesForLoggedUser() throws InterruptedException {
-        login();
+    @ParameterizedTest
+    @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
+    void Should_CountMoviesForLoggedUser(String username, String password) throws InterruptedException {
+        login(username, password);
         Thread.sleep(1000);
 
         WebElement moviesTab = driver.findElement(By.id("movies_tab"));

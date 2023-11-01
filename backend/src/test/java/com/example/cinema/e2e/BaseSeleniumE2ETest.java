@@ -38,14 +38,15 @@ public abstract class BaseSeleniumE2ETest {
         driver.quit();
     }
 
-    protected void login() {
+    protected void login(String username, String password) {
         WebElement usernameInput = driver.findElement(By.id("username_input"));
         WebElement passwordInput = driver.findElement(By.id("password_input"));
 
-        usernameInput.sendKeys("ana@gmail.com");
-        passwordInput.sendKeys("123");
+        usernameInput.sendKeys(username);
+        passwordInput.sendKeys(password);
 
         WebElement loginButton = driver.findElement(By.id("login_button"));
         loginButton.click();
     }
+
 }

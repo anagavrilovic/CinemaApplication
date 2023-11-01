@@ -14,7 +14,7 @@ public class ReservationsE2ETest extends BaseSeleniumE2ETest {
 
     @Test
     void Should_MakeReservationForAProjection() throws InterruptedException {
-        login();
+        login("ana@gmail.com", "123");
         Thread.sleep(1000);
 
         WebElement projectionsTab = driver.findElement(By.id("projections_tab"));
@@ -37,7 +37,7 @@ public class ReservationsE2ETest extends BaseSeleniumE2ETest {
 
     @Test
     void Should_NotMakeReservationForAProjection_When_ThereIsNotEnoughTicketsForAProjection() throws InterruptedException {
-        login();
+        login("ana@gmail.com", "123");
         Thread.sleep(1000);
 
         WebElement projectionsTab = driver.findElement(By.id("projections_tab"));

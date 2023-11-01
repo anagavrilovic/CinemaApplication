@@ -1,6 +1,12 @@
 package com.example.cinema.e2e;
 
+import com.example.cinema.arguments_provider.NotValidUsernameAndPasswordArgumentsProvider;
+import com.example.cinema.arguments_provider.UsernameAndPasswordArgumentsProvider;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -21,15 +27,31 @@ public class LoginE2ETest extends BaseSeleniumE2ETest {
         assertThat(driver.getTitle()).isEqualTo(APP_TITLE);
     }
 
-    @Test
-    void Should_LoginSuccessfully() {
-        login();
+    @ParameterizedTest
+    @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
+    void Should_LoginSuccessfully(String username, String password) throws InterruptedException {
+        login(username, password);
+        Thread.sleep(1000);
+
         assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/home");
     }
 
-    @Test
-    void Should_LogoutSuccessfully() throws InterruptedException {
-        login();
+    @ParameterizedTest
+    @ArgumentsSource(NotValidUsernameAndPasswordArgumentsProvider.class)
+    void Should_NotLogin_When_UsernameOrPasswordNotValid(String username, String password) throws InterruptedException {
+        login(username, password);
+        Thread.sleep(1000);
+
+        WebElement loginErrorMessage = driver.findElement(By.id("login_error_message"));
+
+        assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/");
+        assertThat(loginErrorMessage.getText()).isEqualTo("Wrong email or password! Try again.");
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
+    void Should_LogoutSuccessfully(String username, String password) throws InterruptedException {
+        login(username, password);
         Thread.sleep(1000);
 
         WebElement logoutButton = driver.findElement(By.id("logout_tab"));

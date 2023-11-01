@@ -42,7 +42,7 @@ function Login(props) {
         <div className={classes.login}>
             <h1 id="caption" className={classes.caption}>Log in</h1>
             <form onSubmit={submitHandler} className={classes.form}>
-                <div className={classes.errorMessage}> {error ? "Wrong email or password! Try again." : ""}</div>
+                <div id="login_error_message" className={classes.errorMessage}> {error ? "Wrong email or password! Try again." : ""}</div>
 
                 <div className={classes.formItem}>
                     <input type="text" id="username_input" required placeholder="Email" onChange={() => setError(false)} />
