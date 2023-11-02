@@ -9,11 +9,14 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@TestPropertySource("classpath:application.properties")
 public class LoginE2ETest extends BaseSeleniumE2ETest {
 
     private static final String APP_TITLE = "Cinescape";
