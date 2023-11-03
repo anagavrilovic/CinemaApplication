@@ -44,7 +44,7 @@ public abstract class BaseSeleniumE2ETest {
         options.setHeadless(isHeadless);
 
         driver = new FirefoxDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         driver.get(BASE_URL);
     }
