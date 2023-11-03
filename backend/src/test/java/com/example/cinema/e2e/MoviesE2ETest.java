@@ -46,7 +46,7 @@ public class MoviesE2ETest extends BaseSeleniumE2ETest {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("movie_list")));
         WebElement movieList = driver.findElement(By.id("movie_list"));
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("./div/div")));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("./div/div")));
         List<WebElement> secondChildElements = movieList.findElements((By.xpath("./div/div")));
 
         assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/movies");
