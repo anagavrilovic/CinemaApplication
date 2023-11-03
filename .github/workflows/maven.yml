@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "master", "pipelines" ]
+    branches: [ "master", "*" ]
   pull_request:
     branches: [ "master" ]
 
@@ -46,7 +46,7 @@ jobs:
       with:
         gh_pages: gh-pages
         allure_history: allure-history
-        allure_results: build/allure-results
+        allure_results: target/allure-results
 
     - name: Publish test report
       uses: peaceiris/actions-gh-pages@v3
