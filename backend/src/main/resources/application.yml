@@ -25,5 +25,3 @@ ssl: 'true'
 token:
   signing:
     key: 413F4428472B4B6250655368566D5970337336763979244226452948404D6351
-geckodriver.path: ${GECKODRIVER_PATH:/usr/local/bin/geckodriver}
-firefox.path: ${FIREFOX_PATH:/usr/bin/firefox}
