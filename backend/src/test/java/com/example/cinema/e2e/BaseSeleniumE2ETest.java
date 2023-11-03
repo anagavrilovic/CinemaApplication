@@ -30,7 +30,7 @@ public abstract class BaseSeleniumE2ETest {
     @BeforeEach
     void setUpBeforeEach() {
         if (!initialized) {
-            System.setProperty("webdriver.firefox.bin", firefoxPath);
+            if(!firefoxPath.isBlank()) System.setProperty("webdriver.firefox.bin", firefoxPath);
             System.setProperty("webdriver.gecko.driver", geckoDriverPath);
 
             initialized = true;
