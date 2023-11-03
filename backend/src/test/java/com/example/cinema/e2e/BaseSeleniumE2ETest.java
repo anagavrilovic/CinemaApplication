@@ -7,8 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.time.Duration;
 
 @SpringBootTest
 public abstract class BaseSeleniumE2ETest {
@@ -25,6 +28,7 @@ public abstract class BaseSeleniumE2ETest {
     protected String firefoxPath;
 
     protected WebDriver driver;
+    protected WebDriverWait wait;
     protected static boolean initialized = false;
 
     @BeforeEach
@@ -40,6 +44,8 @@ public abstract class BaseSeleniumE2ETest {
         options.setHeadless(isHeadless);
 
         driver = new FirefoxDriver(options);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+
         driver.get(BASE_URL);
     }
 

@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
@@ -24,6 +25,7 @@ public class LoginE2ETest extends BaseSeleniumE2ETest {
 
     @Test
     void Should_ShowTitleAndCaptionVisibleHtmlElements() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("caption")));
         WebElement caption = driver.findElement(By.id("caption"));
 
         assertThat(caption.getText()).isEqualTo(PAGE_CAPTION);
@@ -55,8 +57,8 @@ public class LoginE2ETest extends BaseSeleniumE2ETest {
     @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
     void Should_LogoutSuccessfully(String username, String password) throws InterruptedException {
         login(username, password);
-        Thread.sleep(1000);
 
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("logout_tab")));
         WebElement logoutButton = driver.findElement(By.id("logout_tab"));
         logoutButton.click();
 

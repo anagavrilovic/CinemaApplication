@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -17,12 +18,15 @@ public class MoviesE2ETest extends BaseSeleniumE2ETest {
     @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
     void Should_ListMoviesForLoggedUser(String username, String password) throws InterruptedException {
         login(username, password);
-        Thread.sleep(1000);
 
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("movies_tab")));
         WebElement moviesTab = driver.findElement(By.id("movies_tab"));
         moviesTab.click();
 
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("movie_list")));
         WebElement movieList = driver.findElement(By.id("movie_list"));
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[contains(text(),'Inception')]")));
         WebElement inceptionMovie = movieList.findElement(By.xpath("//h3[contains(text(),'Inception')]"));
 
         assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/movies");
@@ -34,12 +38,15 @@ public class MoviesE2ETest extends BaseSeleniumE2ETest {
     @ArgumentsSource(UsernameAndPasswordArgumentsProvider.class)
     void Should_CountMoviesForLoggedUser(String username, String password) throws InterruptedException {
         login(username, password);
-        Thread.sleep(1000);
 
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("movies_tab")));
         WebElement moviesTab = driver.findElement(By.id("movies_tab"));
         moviesTab.click();
 
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("movie_list")));
         WebElement movieList = driver.findElement(By.id("movie_list"));
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("./div/div")));
         List<WebElement> secondChildElements = movieList.findElements((By.xpath("./div/div")));
 
         assertThat(driver.getCurrentUrl()).isEqualTo(BASE_URL + "/movies");
