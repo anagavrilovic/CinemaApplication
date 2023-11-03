@@ -32,8 +32,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=cinema
-      - GECKODRIVER_PATH=/opt/hostedtoolcache/geckodriver/0.33.0/x64/geckodriver
-      - FIREFOX_PATH=
     networks:
       - backend
       - frontend
