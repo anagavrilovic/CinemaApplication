@@ -43,9 +43,6 @@ jobs:
         ref: gh-pages
         path: gh-pages
 
-    - name: Allure - Log Start Time
-      run: echo "Report generation started: $(date)"
-
     - name: Allure - Build test report
       uses: simple-elf/allure-report-action@master
       if: always()
@@ -54,10 +51,6 @@ jobs:
         allure_report: ./backend/allure-report
         allure_history: ./backend/allure-history
         allure_results: ./backend/target/allure-results
-
-
-    - name: Allure - Log End Time
-      run: echo "Report generation completed: $(date)"
 
     - name: Allure - Publish test report
       uses: peaceiris/actions-gh-pages@v2
