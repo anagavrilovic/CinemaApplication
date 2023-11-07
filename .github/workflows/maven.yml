@@ -42,7 +42,8 @@ jobs:
 
     - name: Collect Workflow Telemetry
       uses: runforesight/workflow-telemetry-action@v1
-      proc_trace_sys_enable: true
+      with:
+        proc_trace_sys_enable: true
 
     - name: Allure - Build test report
       uses: simple-elf/allure-report-action@master
