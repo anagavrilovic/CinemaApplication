@@ -10,9 +10,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-    - name: Collect Workflow Telemetry
-      uses: runforesight/workflow-telemetry-action@v1
-
     - name: Checkout the code
       uses: actions/checkout@v3
 
@@ -42,6 +39,10 @@ jobs:
       with:
         ref: gh-pages
         path: gh-pages
+
+    - name: Collect Workflow Telemetry
+      uses: runforesight/workflow-telemetry-action@v1
+      proc_trace_sys_enable: true
 
     - name: Allure - Build test report
       uses: simple-elf/allure-report-action@master
