@@ -10,6 +10,9 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
+    - name: Collect Workflow Telemetry
+      uses: runforesight/workflow-telemetry-action@v1
+
     - name: Checkout the code
       uses: actions/checkout@v3
 
@@ -32,7 +35,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
 
-    - name: Load test report history
+    - name: Allure - Load test report history
       uses: actions/checkout@v3
       if: always()
       continue-on-error: true
@@ -40,7 +43,10 @@ jobs:
         ref: gh-pages
         path: gh-pages
 
-    - name: Build test report
+    - name: Allure - Log Start Time
+      run: echo "Report generation started: $(date)"
+
+    - name: Allure - Build test report
       uses: simple-elf/allure-report-action@master
       if: always()
       with:
@@ -49,7 +55,11 @@ jobs:
         allure_history: ./backend/allure-history
         allure_results: ./backend/target/allure-results
 
-    - name: Publish test report
+
+    - name: Allure - Log End Time
+      run: echo "Report generation completed: $(date)"
+
+    - name: Allure - Publish test report
       uses: peaceiris/actions-gh-pages@v2
       if: always()
       env:
