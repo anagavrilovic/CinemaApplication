@@ -41,12 +41,13 @@ jobs:
         path: gh-pages
 
     - name: Build test report
-      uses: simple-elf/allure-report-action@v1.7
+      uses: simple-elf/allure-report-action@master
       if: always()
       with:
         gh_pages: gh-pages
-        allure_history: allure-history
-        allure_results: target/allure-results
+        allure_report: ./backend/allure-report
+        allure_history: ./backend/allure-history
+        allure_results: ./backend/target/allure-results
 
     - name: Publish test report
       uses: peaceiris/actions-gh-pages@v2
@@ -54,4 +55,4 @@ jobs:
       env:
         PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: allure-history
+        PUBLISH_DIR: ./backend/allure-history
