@@ -52,11 +52,10 @@ jobs:
         allure_history: ./backend/allure-history
         allure_results: ./backend/target/allure-results
 
-    - name: Allure - Publish test report
-      uses: peaceiris/actions-gh-pages@v2
-      if: always()
-      env:
-        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./backend/allure-history
-
+    # - name: Allure - Publish test report
+    #   uses: peaceiris/actions-gh-pages@v2
+    #   if: always()
+    #   env:
+    #     PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     PUBLISH_BRANCH: gh-pages
+    #     PUBLISH_DIR: ./backend/allure-history
