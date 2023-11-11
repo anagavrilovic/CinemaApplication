@@ -66,12 +66,12 @@ jobs:
     - name: Maven Surefire - Generate test report
       run: |
         cd ./backend
-        mvn surefire-report:report
+        mvn surefire-report:report-only
     
     - name: Maven Surefire - Publish test report
       uses: peaceiris/actions-gh-pages@v3
       if: always()
-      env:
+      with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: ./backend/target/site/surefire-report.html
