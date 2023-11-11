@@ -32,6 +32,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
 
+    - name: Collect Workflow Telemetry
+      uses: runforesight/workflow-telemetry-action@v1
+      with:
+        proc_trace_sys_enable: true
+
     - name: Allure - Load test report history
       uses: actions/checkout@v3
       if: always()
@@ -39,11 +44,6 @@ jobs:
       with:
         ref: gh-pages
         path: gh-pages
-
-    - name: Collect Workflow Telemetry
-      uses: runforesight/workflow-telemetry-action@v1
-      with:
-        proc_trace_sys_enable: true
 
     - name: Allure - Build test report
       uses: simple-elf/allure-report-action@master
@@ -54,10 +54,23 @@ jobs:
         allure_history: ./backend/allure-history
         allure_results: ./backend/target/allure-results
 
-    # - name: Allure - Publish test report
-    #   uses: peaceiris/actions-gh-pages@v2
-    #   if: always()
-    #   env:
-    #     PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     PUBLISH_BRANCH: gh-pages
-    #     PUBLISH_DIR: ./backend/allure-history
+    - name: Allure - Publish test report
+      uses: peaceiris/actions-gh-pages@v2
+      if: always()
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./backend/allure-history
+
+    - name: Maven Surefire - Generate test report
+      run: |
+        cd ./backend
+        mvn surefire-report:report
+    
+    - name: Maven Surefire - Publish test report
+      uses: peaceiris/actions-gh-pages@v2
+      if: always()
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./backend/target/site/surefire-report.html
