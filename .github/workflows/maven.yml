@@ -68,11 +68,11 @@ jobs:
         cd ./backend
         mvn surefire-report:report
     
-    # - name: Maven Surefire - Publish test report
-    #   uses: peaceiris/actions-gh-pages@v2
-    #   if: always()
-    #   env:
-    #     PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     PUBLISH_BRANCH: gh-pages
-    #     PUBLISH_DIR: ./backend/target/site/surefire-report.html
-    #     DESTINATION_DIR: maven-surefire
+    - name: Maven Surefire - Publish test report
+      uses: peaceiris/actions-gh-pages@v2
+      if: always()
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./backend/target/site/surefire-report.html
+        DESTINATION_DIR: maven-surefire
