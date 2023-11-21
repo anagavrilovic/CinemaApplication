@@ -63,7 +63,7 @@ jobs:
         publish_dir: ./backend/allure-history
         destination_dir: allure
 
-    - name: Maven Surefire - Generate test report
+    - name: Maven Surefire - Generate test report 
       run: |
         cd ./backend
         mvn surefire-report:report-only
