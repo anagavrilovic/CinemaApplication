@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-permissions:
-  contents: write
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -63,7 +60,7 @@ jobs:
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: ./backend/allure-history
+        # publish_dir: ./backend/allure-history
         destination_dir: allure
 
     - name: Maven Surefire - Generate test report
@@ -71,11 +68,11 @@ jobs:
         cd ./backend
         mvn surefire-report:report-only
     
-    - name: Maven Surefire - Publish test report
-      uses: peaceiris/actions-gh-pages@v3
-      if: always()
-      with:
-        personal_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: ./backend/target/site/surefire-report.html
-        destination_dir: maven-surefire
+    # - name: Maven Surefire - Publish test report
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   if: always()
+    #   with:
+    #     personal_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_branch: gh-pages
+    #     publish_dir: ./backend/target/site/surefire-report.html
+    #     destination_dir: maven-surefire
