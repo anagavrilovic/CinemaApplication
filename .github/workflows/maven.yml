@@ -65,29 +65,29 @@ jobs:
     #   with:
     #     personal_token: ${{ secrets.GITHUB_TOKEN }}
     #     publish_branch: gh-pages
-    #     # publish_dir: ./backend/allure-history
+    #     publish_dir: ./backend/allure-history
 
     - name: Maven Surefire - Generate test report
       run: |
         cd ./backend
         mvn surefire-report:report-only
     
-    # - name: Maven Surefire - Publish test report
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   if: always()
-    #   with:
-    #     personal_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_branch: gh-pages
-    #     publish_dir: ./backend/target/site/surefire-report.html
-    #     destination_dir: maven-surefire  
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
+    - name: Maven Surefire - Publish test report
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
       with:
-        # Upload entire repository
-        path: './backend/target'
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v3
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./backend/target
+        # destination_dir: maven-surefire  
+
+    # - name: Setup Pages
+    #   uses: actions/configure-pages@v4
+    # - name: Upload artifact
+    #   uses: actions/upload-pages-artifact@v2
+    #   with:
+    #     # Upload entire repository
+    #     path: './backend/target'
+    # - name: Deploy to GitHub Pages
+    #   id: deployment
+    #   uses: actions/deploy-pages@v3
