@@ -61,7 +61,7 @@ jobs:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: ./backend/allure-history
-        destination_dir: allure
+        # destination_dir: allure
 
     - name: Maven Surefire - Generate test report
       run: |
