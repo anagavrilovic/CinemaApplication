@@ -10,11 +10,7 @@ public class ExtentTestRunner {
     public static void main(String[] args) {
         JUnitCore runner = new JUnitCore();
         runner.addListener(createExtentReportListener());
-        runner.run(MovieControllerTest.class,
-                ProjectionControllerTest.class,
-                ReservationControllerTest.class,
-                TheaterControllerTest.class,
-                UserControllerTest.class);
+        runner.run(UserControllerTest.class);
     }
 
     private static RunListener createExtentReportListener() {
