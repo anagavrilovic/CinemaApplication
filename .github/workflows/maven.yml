@@ -80,14 +80,3 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ./backend/target
         # destination_dir: maven-surefire  
-
-    # - name: Setup Pages
-    #   uses: actions/configure-pages@v4
-    # - name: Upload artifact
-    #   uses: actions/upload-pages-artifact@v2
-    #   with:
-    #     # Upload entire repository
-    #     path: './backend/target'
-    # - name: Deploy to GitHub Pages
-    #   id: deployment
-    #   uses: actions/deploy-pages@v3
