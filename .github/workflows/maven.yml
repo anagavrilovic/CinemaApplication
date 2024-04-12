@@ -54,7 +54,7 @@ jobs:
       uses: simple-elf/allure-report-action@v1.9
       if: always()
       with:
-        # allure_history: ./backend/allure-history
+        allure_history: ./backend/allure-history
         allure_results: ./backend/target/allure-results
 
     - name: Allure - Publish test report
