@@ -42,13 +42,13 @@ jobs:
     #   with:
     #     proc_trace_sys_enable: true
 
-    # - name: Allure - Load test report history
-    #   uses: actions/checkout@v4.1.1
-    #   if: always()
-    #   continue-on-error: true
-    #   with:
-    #     ref: github-pages
-    #     path: github-pages
+    - name: Allure - Load test report history
+      uses: actions/checkout@v4.1.1
+      if: always()
+      continue-on-error: true
+      with:
+        ref: github-pages
+        path: github-pages
 
     - name: Allure - Build test report
       uses: simple-elf/allure-report-action@v1.9
