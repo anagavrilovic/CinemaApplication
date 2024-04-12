@@ -54,8 +54,9 @@ jobs:
       uses: simple-elf/allure-report-action@v1.9
       if: always()
       with:
-        allure_history: ./backend/allure-history
+        allure_history: ./backend/github-pages
         allure_results: ./backend/target/allure-results
+        subfolder: allure-history
 
     # - name: Allure - Publish test report
     #   uses: peaceiris/actions-gh-pages@v3.9.3
