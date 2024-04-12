@@ -47,8 +47,8 @@ jobs:
       if: always()
       continue-on-error: true
       with:
-        ref: gh-pages
-        path: gh-pages
+        ref: github-pages
+        path: github-pages
 
     - name: Allure - Build test report
       uses: simple-elf/allure-report-action@v1.9
@@ -62,7 +62,7 @@ jobs:
       if: always()
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
+        publish_branch: github-pages
         publish_dir: ./backend/allure-history
 
     # - name: Maven Surefire - Generate test report
