@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4.1.1
 
     - name: Setup Firefox
       uses: browser-actions/setup-firefox@latest
@@ -35,15 +35,15 @@ jobs:
       run: docker-compose up -d
 
     - name: Build with Maven
-      run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
+      run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= -Dtest=com.example.cinema.unit.service.MovieServiceTest --file backend/pom.xml
 
-    - name: Collect Workflow Telemetry
-      uses: runforesight/workflow-telemetry-action@v1
-      with:
-        proc_trace_sys_enable: true
+    # - name: Collect Workflow Telemetry
+    #   uses: runforesight/workflow-telemetry-action@v1
+    #   with:
+    #     proc_trace_sys_enable: true
 
     - name: Allure - Load test report history
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4.1.1
       if: always()
       continue-on-error: true
       with:
@@ -51,32 +51,30 @@ jobs:
         path: gh-pages
 
     - name: Allure - Build test report
-      uses: simple-elf/allure-report-action@master
+      uses: simple-elf/allure-report-action@v1.9
       if: always()
       with:
-        gh_pages: gh-pages
-        allure_report: ./backend/allure-report
         allure_history: ./backend/allure-history
         allure_results: ./backend/target/allure-results
 
-    # - name: Allure - Publish test report
+    - name: Allure - Publish test report
+      uses: peaceiris/actions-gh-pages@v3.9.3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./backend/gh/
+
+    # - name: Maven Surefire - Generate test report
+    #   run: |
+    #     cd ./backend
+    #     mvn surefire-report:report-only
+    
+    # - name: Maven Surefire - Publish test report
     #   uses: peaceiris/actions-gh-pages@v3
     #   if: always()
     #   with:
     #     personal_token: ${{ secrets.GITHUB_TOKEN }}
     #     publish_branch: gh-pages
-    #     publish_dir: ./backend/allure-history
-
-    - name: Maven Surefire - Generate test report
-      run: |
-        cd ./backend
-        mvn surefire-report:report-only
-    
-    - name: Maven Surefire - Publish test report
-      uses: peaceiris/actions-gh-pages@v3
-      if: always()
-      with:
-        personal_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: ./backend/target
-        # destination_dir: maven-surefire  
+    #     publish_dir: ./backend/target
+    #     # destination_dir: maven-surefire  

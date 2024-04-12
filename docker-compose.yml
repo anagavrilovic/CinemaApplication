@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   frontend:
-    # image: anagavrilovic/cinemaaplication_frontend:latest
-    build:
-      context: frontend/
-      dockerfile: Dockerfile
-      args:
-        REACT_APP_API_BASE_URL: http://127.0.0.1:8080/
+    image: anagavrilovic/cinemaaplication_frontend:latest
+    # build:
+    #   context: frontend/
+    #   dockerfile: Dockerfile
+    #   args:
+    #     REACT_APP_API_BASE_URL: http://127.0.0.1:8080/
     ports:
       - "3000:80"
     restart: always
@@ -17,10 +17,10 @@ services:
       - frontend
 
   backend:
-    # image: anagavrilovic/cinemaaplication_backend:latest
-    build:
-      context: backend/
-      dockerfile: Dockerfile
+    image: anagavrilovic/cinemaaplication_backend:latest
+    # build:
+    #   context: backend/
+    #   dockerfile: Dockerfile
     ports:
       - "8080:8080"
     restart: always
