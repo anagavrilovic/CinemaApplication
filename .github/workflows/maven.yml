@@ -6,10 +6,10 @@ on:
   pull_request:
     branches: [ "master" ]
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+# permissions:
+#   contents: write
+#   pages: write
+#   id-token: write
 
 jobs:
   build-and-test:
@@ -47,8 +47,8 @@ jobs:
       if: always()
       continue-on-error: true
       with:
-        ref: github-pages
-        path: github-pages
+        ref: gh-p
+        path: gh-p
 
     - name: Allure - Build test report
       uses: simple-elf/allure-report-action@v1.9
