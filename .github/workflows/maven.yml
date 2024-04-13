@@ -58,27 +58,10 @@ jobs:
         allure_results: ./backend/target/allure-results
         subfolder: allure-history
 
-    # - name: Allure - Publish test report
-    #   uses: peaceiris/actions-gh-pages@v3.9.3
-    #   if: always()
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_branch: gh-p
-    #     publish_dir: ./backend/allure-history
-
     - name: Maven Surefire - Generate test report
       run: |
         cd ./backend
-        mvn surefire-report:report-only -DreportOutputDirectory=github-pages/surefire/
-    
-    # - name: Maven Surefire - Publish test report
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   if: always()
-    #   with:
-    #     personal_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_branch: gh-pages
-    #     publish_dir: ./backend/target
-    #     # destination_dir: maven-surefire  
+        mvn surefire-report:report-only -DreportOutputDirectory=github-pages/surefire/ 
 
     - name: Allure - Publish test report
       uses: peaceiris/actions-gh-pages@v3.9.3
