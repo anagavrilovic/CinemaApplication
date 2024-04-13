@@ -69,7 +69,7 @@ jobs:
     - name: Maven Surefire - Generate test report
       run: |
         cd ./backend
-        mvn surefire-report:report-only
+        mvn surefire-report:report-only -DreportOutputDirectory=github-pages/surefire/
     
     # - name: Maven Surefire - Publish test report
     #   uses: peaceiris/actions-gh-pages@v3
