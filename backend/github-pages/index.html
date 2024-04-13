@@ -1,10 +1,56 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Test reports</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Reports - Project XYZ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px 100px 100px 100px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        .report-link {
+            display: block;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #286b9e;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .report-link:hover {
+            background-color: #184466;
+        }
+    </style>
 </head>
 <body>
-    <a href="allure-history/index.html">Allure report</a>
-    <a href="surefire/surefire-report.html">Surefire report</a>
+<div class="container">
+    <h1>Test Reports - CinemaApplication</h1>
+    <p>Welcome to the test reports page for CinemaApplication project. Below are the links to the latest test reports:</p>
+    <a class="report-link" href="allure-history/index.html">Allure Report</a>
+    <a class="report-link" href="surefire/surefire-report.html">Surefire Report</a>
+</div>
 </body>
 </html>
