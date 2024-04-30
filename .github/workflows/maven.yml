@@ -6,11 +6,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-# permissions:
-#   contents: write
-#   pages: write
-#   id-token: write
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -38,7 +33,7 @@ jobs:
       run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
 
     - name: Collect Workflow Telemetry
-      uses: runforesight/workflow-telemetry-action@v1
+      uses: runforesight/workflow-telemetry-action@v2
       with:
         proc_trace_sys_enable: true
 
