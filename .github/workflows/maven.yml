@@ -30,12 +30,12 @@ jobs:
       run: docker-compose up -d
 
     - name: Build with Maven
-      run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
+      run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= -Dtest=com.example.cinema.unit.service.MovieServiceTest --file backend/pom.xml
 
     - name: Collect Workflow Telemetry
-      uses: runforesight/workflow-telemetry-action@v2
-      with:
-        proc_trace_sys_enable: true
+      uses: runforesight/workflow-telemetry-action@v1
+      # with:
+      #   proc_trace_sys_enable: true
 
     - name: Allure - Load test report history
       uses: actions/checkout@v4.1.1
