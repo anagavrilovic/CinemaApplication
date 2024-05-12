@@ -33,7 +33,7 @@ jobs:
       run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
 
     - name: Collect Workflow Telemetry
-    - uses: catchpoint/workflow-telemetry-action@v2
+      uses: catchpoint/workflow-telemetry-action@v2
       # uses: runforesight/workflow-telemetry-action@v2
       # with:
       #   proc_trace_sys_enable: true
