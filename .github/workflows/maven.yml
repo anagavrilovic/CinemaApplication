@@ -33,9 +33,10 @@ jobs:
       run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
 
     - name: Collect Workflow Telemetry
-      uses: runforesight/workflow-telemetry-action@v2
-      with:
-        proc_trace_sys_enable: true
+    - uses: catchpoint/workflow-telemetry-action@v2
+      # uses: runforesight/workflow-telemetry-action@v2
+      # with:
+      #   proc_trace_sys_enable: true
 
     - name: Allure - Load test report history
       uses: actions/checkout@v4.1.1
