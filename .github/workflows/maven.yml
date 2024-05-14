@@ -10,59 +10,61 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@v4.1.1
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+        
+      - name: Checkout the code
+        uses: actions/checkout@v4.1.1
 
-    - name: Setup Firefox
-      uses: browser-actions/setup-firefox@latest
+      - name: Setup Firefox
+        uses: browser-actions/setup-firefox@latest
 
-    - name: Setup gecko driver
-      uses: browser-actions/setup-geckodriver@latest
+      - name: Setup gecko driver
+        uses: browser-actions/setup-geckodriver@latest
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
 
-    - name: Start docker compose
-      run: docker-compose up -d
+      - name: Start docker compose
+        run: docker-compose up -d
 
-    - name: Build with Maven
-      run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
+      - name: Build with Maven
+        run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
 
-    - name: Collect Workflow Telemetry
-      uses: catchpoint/workflow-telemetry-action@v2
-      # uses: runforesight/workflow-telemetry-action@v2
-      # with:
-      #   proc_trace_sys_enable: true
 
-    - name: Allure - Load test report history
-      uses: actions/checkout@v4.1.1
-      if: always()
-      continue-on-error: true
-      with:
-        ref: gh-p
-        path: gh-p
+        # uses: runforesight/workflow-telemetry-action@v2
+        # with:
+        #   proc_trace_sys_enable: true
 
-    - name: Allure - Build test report
-      uses: simple-elf/allure-report-action@v1.9
-      if: always()
-      with:
-        allure_history: ./backend/github-pages
-        allure_results: ./backend/target/allure-results
-        subfolder: allure-history
+      - name: Allure - Load test report history
+        uses: actions/checkout@v4.1.1
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-p
+          path: gh-p
 
-    - name: Maven Surefire - Generate test report
-      run: |
-        cd ./backend
-        mvn surefire-report:report-only -DreportOutputDirectory=github-pages/surefire/ 
+      - name: Allure - Build test report
+        uses: simple-elf/allure-report-action@v1.9
+        if: always()
+        with:
+          allure_history: ./backend/github-pages
+          allure_results: ./backend/target/allure-results
+          subfolder: allure-history
 
-    - name: Publish test reports
-      uses: peaceiris/actions-gh-pages@v3.9.3
-      if: always()
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-p
-        publish_dir: ./backend/github-pages
+      - name: Maven Surefire - Generate test report
+        run: |
+          cd ./backend
+          mvn surefire-report:report-only -DreportOutputDirectory=github-pages/surefire/ 
+
+      - name: Publish test reports
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-p
+          publish_dir: ./backend/github-pages
