@@ -10,9 +10,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Collect Workflow Telemetry
-        uses: catchpoint/workflow-telemetry-action@v1.8.7
-
       - name: Checkout the code
         uses: actions/checkout@v4.1.1
 
@@ -35,10 +32,11 @@ jobs:
       - name: Build with Maven
         run: mvn -B package -DGECKODRIVER_PATH=$(which geckodriver) -DFIREFOX_PATH= --file backend/pom.xml
 
-
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v1.8.7
         # uses: runforesight/workflow-telemetry-action@v2
-        # with:
-        #   proc_trace_sys_enable: true
+        with:
+          proc_trace_sys_enable: true
 
       - name: Allure - Load test report history
         uses: actions/checkout@v4.1.1
