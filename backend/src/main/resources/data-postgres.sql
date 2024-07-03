@@ -4,31 +4,7 @@ VALUES ('admin@gmail.com', 'Admin', 'Admin', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2a
        ('ana@gmail.com', 'Ana', 'Gavrilovic', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'ana'),
        ('sanja@gmail.com', 'Sanja', 'Drinic', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'sanja'),
        ('srdjan@gmail.com', 'Srdjan', 'Sukovic', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'srdjan'),
-       ('marija@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'marija'),
-       ('user1@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user1'),
-       ('user2@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user2'),
-       ('user3@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user3'),
-       ('user4@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user4'),
-       ('user5@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user5'),
-       ('user6@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user6'),
-       ('user7@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user7'),
-       ('user8@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user8'),
-       ('user9@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user9'),
-       ('user10@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user10'),
-       ('user11@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user11'),
-       ('user12@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user12'),
-       ('user13@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user13'),
-       ('user14@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user14'),
-       ('user15@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user15'),
-       ('user16@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user16'),
-       ('user17@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user17'),
-       ('user18@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user18'),
-       ('user19@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user19'),
-       ('user20@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user20'),
-       ('user21@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user21'),
-       ('user22@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user22'),
-       ('user23@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user23'),
-       ('user24@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'user24');
+       ('marija@gmail.com', 'Marija', 'Kljestan', '$2a$10$E5bwurPH0uml1WmBsk/ooeIo/2aV2U4VOj93GOMgFQx5WQ.JcGNGS', 'USER', 'marija');
 
 --  theatres
 INSERT INTO public.theater("name", number_of_seats)
