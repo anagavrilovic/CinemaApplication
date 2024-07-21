@@ -1,10 +1,10 @@
-name: Java CI with Maven
+name:  CI pipeline for Cinema Application
 
 on:
-  push:
-    branches: [ "master", "*" ]
   pull_request:
     branches: [ "master" ]
+  push:
+    branches: [ "*" ]
 
 jobs:
   build-and-test:
@@ -34,8 +34,6 @@ jobs:
 
       - name: Collect Workflow Telemetry
         uses: catchpoint/workflow-telemetry-action@v1.8.7
-        with:
-          proc_trace_sys_enable: true
 
       - name: Allure - Load test report history
         uses: actions/checkout@v4.1.1
