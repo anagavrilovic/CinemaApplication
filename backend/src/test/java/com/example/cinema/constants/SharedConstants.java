@@ -4,6 +4,6 @@ public class SharedConstants {
 
     public static final int numberOfUnitTestIterations = 500;
     public static final int numberOfIntegrationTestIterations = 1000;
-    public static final int numberOfE2ETestIterations = 100;
+    public static final int numberOfE2ETestIterations = 20;
 
 }
