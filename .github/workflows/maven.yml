@@ -56,10 +56,10 @@ jobs:
           cd ./backend
           mvn surefire-report:report-only -DreportOutputDirectory=github-pages/surefire/ 
 
-      - name: Clean gh-p branch
-        run: |
-          git checkout gh-p
-          git clean -fdx
+      # - name: Clean gh-p branch
+      #   run: |
+      #     git checkout gh-p
+      #     git clean -fdx
 
       - name: Publish test reports
         uses: peaceiris/actions-gh-pages@v3.9.3
