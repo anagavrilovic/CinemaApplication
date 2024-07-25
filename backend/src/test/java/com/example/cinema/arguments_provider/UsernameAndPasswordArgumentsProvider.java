@@ -10,8 +10,8 @@ public class UsernameAndPasswordArgumentsProvider implements ArgumentsProvider {
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
         return Stream.of(
-                Arguments.of("ana@gmail.com", "123"),
-                Arguments.of("sanja@gmail.com", "123"),
+                Arguments.of("ana@gmail.com", "1234"),
+                Arguments.of("sanja@gmail.com", "1234"),
                 Arguments.of("admin@gmail.com", "123"),
                 Arguments.of("srdjan@gmail.com", "123"),
                 Arguments.of("marija@gmail.com", "123")
