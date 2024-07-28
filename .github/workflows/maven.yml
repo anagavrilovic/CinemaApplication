@@ -34,6 +34,8 @@ jobs:
 
       - name: Collect Workflow Telemetry
         uses: catchpoint/workflow-telemetry-action@v1.8.7
+        with:
+          metric_frequency: 1s
 
       - name: Allure - Load test report history
         uses: actions/checkout@v4.1.1
@@ -55,11 +57,6 @@ jobs:
         run: |
           cd ./backend
           mvn surefire-report:report-only -DreportOutputDirectory=github-pages/surefire/ 
-
-      # - name: Clean gh-p branch
-      #   run: |
-      #     git checkout gh-p
-      #     git clean -fdx
 
       - name: Publish test reports
         uses: peaceiris/actions-gh-pages@v3.9.3
